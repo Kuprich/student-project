@@ -4,19 +4,19 @@ public class StudentOrderValidator {
     }
 
     private static void checkAll() {
-        while (true) {
+        //while (true) {
             StudentOrder so = readStudentOrder();
 
             if (so == null) return;
 
             AnswerCityRegister cityAnswer = checkCityRegister(so);
-            if (!cityAnswer.success) continue;
+            //if (!cityAnswer.success) continue;
             AnswerWedding wedAnswer = checkWedding(so);
             AnswerChildren childAnswer = checkChildren(so);
             AnswerStudent studentAnswer = checkStudent(so);
 
             sendMail(so);
-        }
+       // }
 
     }
 
@@ -28,10 +28,11 @@ public class StudentOrderValidator {
     }
 
     static AnswerCityRegister checkCityRegister(StudentOrder so) {
-        System.out.println("checkCityRegister");
-        AnswerCityRegister result = new AnswerCityRegister();
-        result.success = true;
-        return result;
+        CityRegisterValidator validator = new CityRegisterValidator();
+        validator.hostName = "host1";
+        validator.login = "login1";
+        validator.password = "password1";
+        return validator.checkCityRegister(so);
     }
 
     static AnswerWedding checkWedding(StudentOrder so) {
