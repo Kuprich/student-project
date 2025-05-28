@@ -1,3 +1,12 @@
+package edu.javacourse.studentorder;
+
+import edu.javacourse.studentorder.domain.*;
+import edu.javacourse.studentorder.mail.MailSender;
+import edu.javacourse.studentorder.validator.ChildrenValidator;
+import edu.javacourse.studentorder.validator.CityRegisterValidator;
+import edu.javacourse.studentorder.validator.StudentValidator;
+import edu.javacourse.studentorder.validator.WeddingValidator;
+
 public class StudentOrderValidator {
     public static void main(String[] args) {
         checkAll();
@@ -20,9 +29,6 @@ public class StudentOrderValidator {
 
     }
 
-    static void sendMail(StudentOrder so) {
-    }
-
     static StudentOrder readStudentOrder() {
         return new StudentOrder();
     }
@@ -36,17 +42,22 @@ public class StudentOrderValidator {
     }
 
     static AnswerWedding checkWedding(StudentOrder so) {
-        System.out.println("checkWedding");
-        return new AnswerWedding();
+        WeddingValidator validator = new WeddingValidator();
+        return validator.checkWedding(so);
     }
 
     static AnswerChildren checkChildren(StudentOrder so) {
-        System.out.println("checkChildren");
-        return new AnswerChildren();
+        ChildrenValidator validator = new ChildrenValidator();
+        return validator.checkChildren(so);
     }
 
     static AnswerStudent checkStudent(StudentOrder so) {
-        System.out.println("checkStudent");
-        return new AnswerStudent();
+        StudentValidator validator = new StudentValidator();
+        return validator.checkStudent(so);
+    }
+
+    static void sendMail(StudentOrder so) {
+        MailSender mailSender = new MailSender();
+        mailSender.sendMail(so);
     }
 }

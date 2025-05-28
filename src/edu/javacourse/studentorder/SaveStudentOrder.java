@@ -1,3 +1,7 @@
+package edu.javacourse.studentorder;
+
+import edu.javacourse.studentorder.domain.*;
+
 
 public class SaveStudentOrder {
 
@@ -15,4 +19,5 @@ public class SaveStudentOrder {
         System.out.println("hLastName = " + studentOrder.hLastName);
         return answer;
     }
+
 }
