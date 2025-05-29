@@ -30,23 +30,27 @@ public class StudentOrderValidator {
 
     private void checkAll() {
         //while (true) {
-        StudentOrder so = readStudentOrder();
+        StudentOrder[] sos = readStudentOrders();
+        for (StudentOrder so : sos) {
+            System.out.println("");
+            checkOneOrder(so);
+        }
 
-        if (so == null) return;
-
+    }
+    private void checkOneOrder(StudentOrder so){
         AnswerCityRegister cityAnswer = checkCityRegister(so);
-        //if (!cityAnswer.success) continue;
         AnswerWedding wedAnswer = checkWedding(so);
         AnswerChildren childAnswer = checkChildren(so);
         AnswerStudent studentAnswer = checkStudent(so);
-
         sendMail(so);
-        // }
-
     }
 
-    private StudentOrder readStudentOrder() {
-        return new StudentOrder();
+    private StudentOrder[] readStudentOrders() {
+        StudentOrder[] soArray = new StudentOrder[3];
+        for (int i = 0; i < soArray.length; i++){
+            soArray[i] = SaveStudentOrder.buildStudentOrder(i);
+        }
+        return soArray;
     }
 
     private AnswerCityRegister checkCityRegister(StudentOrder so) {
