@@ -39,10 +39,10 @@ public class StudentOrderValidator {
     }
     private void checkOneOrder(StudentOrder so){
         AnswerCityRegister cityAnswer = checkCityRegister(so);
-        AnswerWedding wedAnswer = checkWedding(so);
-        AnswerChildren childAnswer = checkChildren(so);
-        AnswerStudent studentAnswer = checkStudent(so);
-        sendMail(so);
+  //      AnswerWedding wedAnswer = checkWedding(so);
+ //       AnswerChildren childAnswer = checkChildren(so);
+   //     AnswerStudent studentAnswer = checkStudent(so);
+    //    sendMail(so);
     }
 
     private StudentOrder[] readStudentOrders() {
