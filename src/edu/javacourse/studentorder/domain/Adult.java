@@ -58,5 +58,10 @@ public class Adult extends Person {
         this.issueDepartment = issueDepartment;
     }
 
+    @Override
+    public String getPersonString() {
+        return getSurName() + " " + getGivenName() + " " + getPassportNumber();
+    }
+
 }
 
