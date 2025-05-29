@@ -1,6 +1,7 @@
 package edu.javacourse.studentorder.validator;
 
 import edu.javacourse.studentorder.domain.AnswerCityRegister;
+import edu.javacourse.studentorder.domain.Child;
 import edu.javacourse.studentorder.domain.StudentOrder;
 import edu.javacourse.studentorder.exception.CityRegisterException;
 
@@ -16,7 +17,10 @@ public class CityRegisterValidator {
         try{
             personChecker.checkPerson(so.getHusband());
             personChecker.checkPerson(so.getWife());
-            personChecker.checkPerson(so.getChild());
+            for (Child child : so.getChildren()) {
+                personChecker.checkPerson(child);
+            }
+           // personChecker.checkPerson(so.getChildren());
         } catch (CityRegisterException e) {
             e.printStackTrace();
         }
