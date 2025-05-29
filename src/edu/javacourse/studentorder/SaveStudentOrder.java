@@ -2,29 +2,44 @@ package edu.javacourse.studentorder;
 
 import edu.javacourse.studentorder.domain.*;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 
 public class SaveStudentOrder {
 
-    public static void main(String[] args) {
-//        StudentOrder so = buildStudentOrder(10);
-//
-//        System.out.println(so.getHusband().getPersonString());
+    public static void main(String[] args) throws Exception {
+        Class.forName("org.postgresql.Driver");
+        Connection con = DriverManager.getConnection (
+                "jdbc:postgresql://localhost:5434/jc_student",
+                "postgres", "postgres"
+        );
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from jc_street");
+        while(rs.next()){
+            System.out.println(rs.getLong(1) + " : " + rs.getString(2));
+        }
 
+
+//        StudentOrder so = buildStudentOrder(10);
+//        System.out.println(so.getHusband().getPersonString());
 //        long ans = saveStudentOrder(so);
 //        System.out.println(ans);
     }
-    static long saveStudentOrder(StudentOrder studentOrder){
+
+    static long saveStudentOrder(StudentOrder studentOrder) {
         long answer = 199;
         System.out.println("hLastName = " + studentOrder.getStudentOrderId());
         return answer;
     }
 
-    static StudentOrder buildStudentOrder(long id){
+    static StudentOrder buildStudentOrder(long id) {
         StudentOrder so = new StudentOrder();
         so.setStudentOrderId(id);
-        so.setMarriageCertificateId(""+(123456000 + id));
+        so.setMarriageCertificateId("" + (123456000 + id));
         so.setMarriageDate(LocalDate.of(2016, 7, 4));
         so.setMarriageOffice("Отдел ЗАГС");
 
