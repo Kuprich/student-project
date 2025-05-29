@@ -54,7 +54,7 @@ public class StudentOrderValidator {
 
     private List<StudentOrder> readStudentOrders() {
         List<StudentOrder> soList = new LinkedList<>();
-        for (int i = 0; i < 2; i++){
+        for (int i = 0; i < 4; i++){
             soList.add(SaveStudentOrder.buildStudentOrder(i));
         }
         return soList;
