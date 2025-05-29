@@ -1,9 +1,14 @@
 package edu.javacourse.studentorder.validator;
 
-import edu.javacourse.studentorder.domain.AnswerCityRegister;
+import edu.javacourse.studentorder.domain.Person;
+import edu.javacourse.studentorder.domain.register.AnswerCityRegister;
 import edu.javacourse.studentorder.domain.Child;
 import edu.javacourse.studentorder.domain.StudentOrder;
+import edu.javacourse.studentorder.domain.register.AnswerCityRegisterItem;
+import edu.javacourse.studentorder.domain.register.CityRegisterResponse;
 import edu.javacourse.studentorder.exception.CityRegisterException;
+import edu.javacourse.studentorder.validator.register.CityRegisterChecker;
+import edu.javacourse.studentorder.validator.register.FakeCityRegisterChecker;
 
 public class CityRegisterValidator {
 
@@ -14,20 +19,25 @@ public class CityRegisterValidator {
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder so) {
+        AnswerCityRegister result = new AnswerCityRegister();
+
+        result.addItem(checkPerson(so.getHusband()));
+        result.addItem(checkPerson(so.getWife()));
+
+        for (Child child : so.getChildren()) {
+            result.addItem(checkPerson(child));
+        }
+
+        return result;
+    }
+
+    public AnswerCityRegisterItem checkPerson(Person person){
         try{
-            personChecker.checkPerson(so.getHusband());
-            personChecker.checkPerson(so.getWife());
-            for (Child child : so.getChildren()) {
-                personChecker.checkPerson(child);
-            }
-           // personChecker.checkPerson(so.getChildren());
+            CityRegisterResponse response =  personChecker.checkPerson(person);
         } catch (CityRegisterException e) {
             e.printStackTrace();
         }
-
-
-        AnswerCityRegister result = new AnswerCityRegister();
-        result.success = true;
-        return result;
+        return null;
     }
+
 }
