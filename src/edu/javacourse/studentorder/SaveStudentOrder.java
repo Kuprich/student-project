@@ -1,5 +1,7 @@
 package edu.javacourse.studentorder;
 
+import edu.javacourse.studentorder.dao.DictionaryDao;
+import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
 import edu.javacourse.studentorder.domain.*;
 
 import java.sql.Connection;
@@ -7,11 +9,16 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class SaveStudentOrder {
 
     public static void main(String[] args) throws Exception {
+        List<Street> tmp = new DictionaryDaoImpl().getStreet("пуш");
+        for (Street street : tmp) {
+            System.out.println(street.getStreetCode() + " : " + street.getStreetName());
+        }
         //Class.forName("org.postgresql.Driver");
 
 
