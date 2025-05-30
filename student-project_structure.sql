@@ -52,7 +52,9 @@ CREATE TABLE jc_register_office (
 -- Создание таблицы студенческих заявок
 -- =============================================
 CREATE TABLE jc_student_order (
-    student_order_id  SERIAL,
+    student_order_id SERIAL,
+    student_order_status INT             NOT NULL,
+    student_oder_date    TIMESTAMP       NOT NULL,
     
     -- Данные мужа
     h_sur_name           VARCHAR(100)    NOT NULL,

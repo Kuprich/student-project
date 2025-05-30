@@ -1,14 +1,24 @@
 package edu.javacourse.studentorder.domain;
 
+import edu.javacourse.studentorder.dao.StudentOrderDao;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentOrder {
+
+    public static enum StudentOrderStatus{
+        START, CHECKED
+    }
+
     private long studentOrderId;
+    private LocalDateTime studentOrderDate;
+    private StudentOrderStatus studentOrderStatus;
     private String marriageCertificateId;
     private LocalDate marriageDate;
-    private String marriageOffice;
+    private RegisterOffice marriageOffice;
 
     private Adult husband;
     private Adult wife;
@@ -65,11 +75,27 @@ public class StudentOrder {
         this.marriageDate = marriageDate;
     }
 
-    public String getMarriageOffice() {
+    public LocalDateTime getStudentOrderDate() {
+        return studentOrderDate;
+    }
+
+    public void setStudentOrderDate(LocalDateTime studentOrderDate) {
+        this.studentOrderDate = studentOrderDate;
+    }
+
+    public StudentOrderStatus getStudentOrderStatus() {
+        return studentOrderStatus;
+    }
+
+    public void setStudentOrderStatus(StudentOrderStatus studentOrderStatus) {
+        this.studentOrderStatus = studentOrderStatus;
+    }
+
+    public RegisterOffice getMarriageOffice() {
         return marriageOffice;
     }
 
-    public void setMarriageOffice(String marriageOffice) {
+    public void setMarriageOffice(RegisterOffice marriageOffice) {
         this.marriageOffice = marriageOffice;
     }
 }

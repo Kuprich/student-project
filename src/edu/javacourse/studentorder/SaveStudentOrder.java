@@ -1,15 +1,9 @@
 package edu.javacourse.studentorder;
 
-import edu.javacourse.studentorder.dao.DictionaryDao;
-import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
+import edu.javacourse.studentorder.dao.StudentOrderDaoImpl;
 import edu.javacourse.studentorder.domain.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.List;
 
 
 public class SaveStudentOrder {
@@ -30,34 +24,34 @@ public class SaveStudentOrder {
 //            System.out.println(office.getOfficeId()+ " : " + office.getOfficeAreaId() + " : " + office.getOfficeName());
 //        }
 
-        List<CountryArea> c1 = new DictionaryDaoImpl().getAreas("");
-        for (CountryArea area : c1) {
-            System.out.println(area.getAreaId() + " : " + area.getAreaName());
-        }
-
-        System.out.println("");
-
-        List<CountryArea> c2 = new DictionaryDaoImpl().getAreas("020000000000");
-        for (CountryArea area : c2) {
-            System.out.println(area.getAreaId() + " : " + area.getAreaName());
-        }
-
-        System.out.println("");
-
-        List<CountryArea> c3 = new DictionaryDaoImpl().getAreas("020020000000");
-        for (CountryArea area : c3) {
-            System.out.println(area.getAreaId() + " : " + area.getAreaName());
-        }
-
-        System.out.println("");
-
-        List<CountryArea> c4 = new DictionaryDaoImpl().getAreas("020020020000");
-        for (CountryArea area : c4) {
-            System.out.println(area.getAreaId() + " : " + area.getAreaName());
-        }
+//        List<CountryArea> c1 = new DictionaryDaoImpl().getAreas("");
+//        for (CountryArea area : c1) {
+//            System.out.println(area.getAreaId() + " : " + area.getAreaName());
+//        }
+//
+//        System.out.println("");
+//
+//        List<CountryArea> c2 = new DictionaryDaoImpl().getAreas("020000000000");
+//        for (CountryArea area : c2) {
+//            System.out.println(area.getAreaId() + " : " + area.getAreaName());
+//        }
+//
+//        System.out.println("");
+//
+//        List<CountryArea> c3 = new DictionaryDaoImpl().getAreas("020020000000");
+//        for (CountryArea area : c3) {
+//            System.out.println(area.getAreaId() + " : " + area.getAreaName());
+//        }
+//
+//        System.out.println("");
+//
+//        List<CountryArea> c4 = new DictionaryDaoImpl().getAreas("020020020000");
+//        for (CountryArea area : c4) {
+//            System.out.println(area.getAreaId() + " : " + area.getAreaName());
+//        }
         //Class.forName("org.postgresql.Driver");
 
-
+        long soId = new StudentOrderDaoImpl().SaveStudentOrder(buildStudentOrder(1));
 
 
 //        StudentOrder so = buildStudentOrder(10);
@@ -77,9 +71,9 @@ public class SaveStudentOrder {
         so.setStudentOrderId(id);
         so.setMarriageCertificateId("" + (123456000 + id));
         so.setMarriageDate(LocalDate.of(2016, 7, 4));
-        so.setMarriageOffice("Отдел ЗАГС");
+        so.setMarriageOffice(new RegisterOffice(1, "", ""));
 
-        Address address = new Address(new Street(1, "ул. Иванова"), "Заневский пр.", "12", "", "142");
+        Address address = new Address(new Street(1, "ул. Иванова"), "123", "12", "", "142");
         PassportOffice passportOffice = new PassportOffice(1, "010001010", "Office name");
         Adult husband = new Adult("Петров", "Виктор", "Сергеевич", LocalDate.of(1997, 8, 24));
         husband.setPassportSeria("" + (1000 + id));
