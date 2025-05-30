@@ -15,25 +15,46 @@ import java.util.List;
 public class SaveStudentOrder {
 
     public static void main(String[] args) throws Exception {
-        List<Street> streets = new DictionaryDaoImpl().getStreet("пуш");
-        for (Street street : streets) {
-            System.out.println(street.getStreetCode() + " : " + street.getStreetName());
-        }
-
-        List<PassportOffice> p_offices = new DictionaryDaoImpl().getPassportOffices("010020000000");
-        for (PassportOffice office : p_offices) {
-            System.out.println(office.getOfficeId()+ " : " + office.getOfficeAreaId() + " : " + office.getOfficeName());
-        }
-
-        List<RegisterOffice> r_offices = new DictionaryDaoImpl().getRegisterOffices("010010000000");
-        for (RegisterOffice office : r_offices) {
-            System.out.println(office.getOfficeId()+ " : " + office.getOfficeAreaId() + " : " + office.getOfficeName());
-        }
-
-//        List<Street> tmp = new DictionaryDaoImpl().getStreet("пуш");
-//        for (Street street : tmp) {
+//        List<Street> streets = new DictionaryDaoImpl().getStreet("пуш");
+//        for (Street street : streets) {
 //            System.out.println(street.getStreetCode() + " : " + street.getStreetName());
 //        }
+//
+//        List<PassportOffice> p_offices = new DictionaryDaoImpl().getPassportOffices("010020000000");
+//        for (PassportOffice office : p_offices) {
+//            System.out.println(office.getOfficeId()+ " : " + office.getOfficeAreaId() + " : " + office.getOfficeName());
+//        }
+//
+//        List<RegisterOffice> r_offices = new DictionaryDaoImpl().getRegisterOffices("010010000000");
+//        for (RegisterOffice office : r_offices) {
+//            System.out.println(office.getOfficeId()+ " : " + office.getOfficeAreaId() + " : " + office.getOfficeName());
+//        }
+
+        List<CountryArea> c1 = new DictionaryDaoImpl().getAreas("");
+        for (CountryArea area : c1) {
+            System.out.println(area.getAreaId() + " : " + area.getAreaName());
+        }
+
+        System.out.println("");
+
+        List<CountryArea> c2 = new DictionaryDaoImpl().getAreas("020000000000");
+        for (CountryArea area : c2) {
+            System.out.println(area.getAreaId() + " : " + area.getAreaName());
+        }
+
+        System.out.println("");
+
+        List<CountryArea> c3 = new DictionaryDaoImpl().getAreas("020020000000");
+        for (CountryArea area : c3) {
+            System.out.println(area.getAreaId() + " : " + area.getAreaName());
+        }
+
+        System.out.println("");
+
+        List<CountryArea> c4 = new DictionaryDaoImpl().getAreas("020020020000");
+        for (CountryArea area : c4) {
+            System.out.println(area.getAreaId() + " : " + area.getAreaName());
+        }
         //Class.forName("org.postgresql.Driver");
 
 
