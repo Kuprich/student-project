@@ -2,15 +2,24 @@ package edu.javacourse.studentorder.domain;
 
 import edu.javacourse.studentorder.dao.StudentOrderDao;
 
+import javax.swing.text.html.Option;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class StudentOrder {
 
-    public static enum StudentOrderStatus{
-        START, CHECKED
+    public enum StudentOrderStatus{
+        START, CHECKED;
+        public static StudentOrderStatus Get(int value){
+            Optional<StudentOrderStatus> result = Arrays.stream(StudentOrderStatus.values()).filter(x -> x.ordinal() == value).findFirst();
+            if (result.isEmpty()) throw new RuntimeException("Unknown value: " + value);
+
+            return result.get();
+        }
     }
 
     private long studentOrderId;

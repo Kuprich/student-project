@@ -1,14 +1,13 @@
 package edu.javacourse.studentorder.dao;
 
 import edu.javacourse.studentorder.config.Config;
-import edu.javacourse.studentorder.domain.Adult;
-import edu.javacourse.studentorder.domain.Child;
-import edu.javacourse.studentorder.domain.Person;
-import edu.javacourse.studentorder.domain.StudentOrder;
+import edu.javacourse.studentorder.domain.*;
 import edu.javacourse.studentorder.exception.DaoException;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentOrderDaoImpl implements StudentOrderDao {
 
@@ -25,6 +24,11 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
     private static final String INSERT_CHILD = "INSERT INTO public.jc_student_child(" +
             "student_order_id, c_sur_name, c_given_name, c_patronymic, c_date_of_birth, c_certificate_number, c_certificate_date, c_register_office_id, c_post_index, c_street_code, c_building, c_extension, c_apartment)" +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+    private static final String SELECT_STUDENT_ORDERS = "SELECT * FROM public.jc_student_order " +
+            "WHERE student_order_status = 0 " +
+            "ORDER BY student_oder_date;";
+
 
     private Connection getConnection() throws SQLException {
         Connection connection = DriverManager.getConnection(
@@ -79,7 +83,47 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
         }
     }
 
+    @Override
+    public List<StudentOrder> getStudentOrders() throws DaoException {
+
+        List<StudentOrder> result = new ArrayList<>();
+
+        try (Connection con = getConnection();
+             PreparedStatement stmt = con.prepareStatement(SELECT_STUDENT_ORDERS)) {
+
+            ResultSet resultSet = stmt.executeQuery();
+            while(resultSet.next()){
+                StudentOrder studentOrder = new StudentOrder();
+                fillStudentOrder(resultSet, studentOrder);
+                fillMarriage(resultSet, studentOrder);
+                result.add(studentOrder);
+            }
+
+            resultSet.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return result;
+
+    }
+
+    private void fillMarriage(ResultSet resultSet, StudentOrder studentOrder) throws SQLException {
+        studentOrder.setMarriageCertificateId(resultSet.getString("certificate_id"));
+        long moId = resultSet.getLong("register_office_id");
+        studentOrder.setMarriageOffice(new RegisterOffice(moId, "Fake ID", "Fake office name"));
+        studentOrder.setMarriageDate(resultSet.getDate("marriage_date").toLocalDate());
+    }
+
+    private void fillStudentOrder(ResultSet resultSet, StudentOrder studentOrder) throws SQLException {
+        studentOrder.setStudentOrderId(resultSet.getLong("student_order_id"));
+        studentOrder.setStudentOrderStatus(StudentOrder.StudentOrderStatus.Get(resultSet.getInt("student_order_status")));
+        studentOrder.setStudentOrderDate(resultSet.getTimestamp("student_oder_date").toLocalDateTime());
+    }
+
     private void saveChildren(Connection con, StudentOrder studentOrder, long studentOrderId) {
+
         try (PreparedStatement stmt = con.prepareStatement(INSERT_CHILD)) {
             for (Child child : studentOrder.getChildren()) {
                 stmt.setLong(1, studentOrderId);

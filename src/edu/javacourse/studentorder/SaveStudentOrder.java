@@ -1,9 +1,11 @@
 package edu.javacourse.studentorder;
 
+import edu.javacourse.studentorder.dao.StudentOrderDao;
 import edu.javacourse.studentorder.dao.StudentOrderDaoImpl;
 import edu.javacourse.studentorder.domain.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class SaveStudentOrder {
@@ -51,7 +53,12 @@ public class SaveStudentOrder {
 //        }
         //Class.forName("org.postgresql.Driver");
 
-        long soId = new StudentOrderDaoImpl().SaveStudentOrder(buildStudentOrder(1));
+        StudentOrderDaoImpl studentOrderDao = new StudentOrderDaoImpl();
+        //studentOrderDao.SaveStudentOrder(buildStudentOrder(1));
+
+        List<StudentOrder> studentOrders = studentOrderDao.getStudentOrders();
+
+
 
 
 //        StudentOrder so = buildStudentOrder(10);
@@ -69,6 +76,7 @@ public class SaveStudentOrder {
     static StudentOrder buildStudentOrder(long id) {
         StudentOrder so = new StudentOrder();
         so.setStudentOrderId(id);
+        so.setStudentOrderStatus(StudentOrder.StudentOrderStatus.START); //TODO: check it
         so.setMarriageCertificateId("" + (123456000 + id));
         so.setMarriageDate(LocalDate.of(2016, 7, 4));
         so.setMarriageOffice(new RegisterOffice(1, "", ""));
