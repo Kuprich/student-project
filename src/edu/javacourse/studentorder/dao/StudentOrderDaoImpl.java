@@ -37,31 +37,38 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
         try (Connection con = getConnection();
              PreparedStatement stmt = con.prepareStatement(INSERT_ORDER, new String[]{"student_order_id"})) {
 
-            stmt.setInt(1, StudentOrder.StudentOrderStatus.START.ordinal());
-            stmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            con.setAutoCommit(false);
+            try {
+                stmt.setInt(1, StudentOrder.StudentOrderStatus.START.ordinal());
+                stmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
 
-            // husband
-            SetParamsForAdult(stmt, so.getHusband(), 3);
+                // husband
+                SetParamsForAdult(stmt, so.getHusband(), 3);
 
-            // wife
-            SetParamsForAdult(stmt, so.getWife(), 16);
+                // wife
+                SetParamsForAdult(stmt, so.getWife(), 16);
 
-            // register
-            stmt.setString(29, so.getMarriageCertificateId());
-            stmt.setLong(30, so.getMarriageOffice().getOfficeId());
-            stmt.setDate(31, Date.valueOf(so.getMarriageDate()));
+                // register
+                stmt.setString(29, so.getMarriageCertificateId());
+                stmt.setLong(30, so.getMarriageOffice().getOfficeId());
+                stmt.setDate(31, Date.valueOf(so.getMarriageDate()));
 
-            var sqlResult = stmt.toString();
+                var sqlResult = stmt.toString();
 
-            stmt.executeUpdate();
+                stmt.executeUpdate();
 
-            ResultSet generatedKeys = stmt.getGeneratedKeys();
-            long studentOrderId = (generatedKeys.next()) ? generatedKeys.getLong("student_order_id") : -1;
+                ResultSet generatedKeys = stmt.getGeneratedKeys();
+                long studentOrderId = (generatedKeys.next()) ? generatedKeys.getLong("student_order_id") : -1;
 
-            if (studentOrderId != -1)
-                saveChildren(con, so, studentOrderId);
+                if (studentOrderId != -1)
+                    saveChildren(con, so, studentOrderId);
 
-            return -1L;
+                return -1L;
+            } catch (SQLException e) {
+                con.rollback();
+                throw e;
+            }
+
 
         } catch (SQLException e) {
             throw new DaoException(e);
