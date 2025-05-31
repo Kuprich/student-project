@@ -25,10 +25,14 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
             "student_order_id, c_sur_name, c_given_name, c_patronymic, c_date_of_birth, c_certificate_number, c_certificate_date, c_register_office_id, c_post_index, c_street_code, c_building, c_extension, c_apartment)" +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-    private static final String SELECT_STUDENT_ORDERS = "SELECT so.*, ro.r_office_area_id, ro.r_office_name " +
+    private static final String SELECT_STUDENT_ORDERS = "SELECT so.*, ro.r_office_area_id, ro.r_office_name, " +
+            "po_h.p_office_area_id h_p_office_area_id, po_h.p_office_name h_p_office_name, " +
+            "po_w.p_office_area_id w_p_office_area_id, po_w.p_office_name w_p_office_name " +
             "FROM jc_student_order so " +
             "INNER JOIN jc_register_office ro ON ro.r_office_id = so.register_office_id " +
-            "WHERE student_order_status = 0 ORDER BY student_oder_date;";
+            "INNER JOIN jc_passport_office po_h ON po_h.p_office_id = so.h_passport_office_id " +
+            "INNER JOIN jc_passport_office po_w ON po_w.p_office_id = so.w_passport_office_id " +
+            "WHERE student_order_status = 0 ORDER BY student_oder_date";
 
 
     private Connection getConnection() throws SQLException {
@@ -121,7 +125,12 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
         result.setPassportSeria(resultSet.getString(prefix + "passport_seria"));
         result.setPassportNumber(resultSet.getString(prefix + "passport_number"));
         result.setIssueDate(resultSet.getDate(prefix + "passport_date").toLocalDate());
-        result.setIssueDepartment(new PassportOffice(resultSet.getLong(prefix + "passport_office_id"), "Fake", "Fake"));
+
+        Long officeId = resultSet.getLong(prefix + "passport_office_id");
+        String officeAreaId = resultSet.getString(prefix + "p_office_area_id");
+        String officeName = resultSet.getString(prefix + "p_office_name");
+
+        result.setIssueDepartment(new PassportOffice(officeId, officeAreaId, officeName));
 
         Address address = new Address();
         address.setPostCode(resultSet.getString(prefix + "post_index"));
