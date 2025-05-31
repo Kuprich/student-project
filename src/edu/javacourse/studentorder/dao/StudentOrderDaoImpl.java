@@ -80,8 +80,9 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
             for(Child child : studentOrder.getChildren()){
                 stmt.setLong(1, studentOrderId);
                 setParamsForChild(stmt, child, 2);
-                stmt.executeUpdate();
+                stmt.addBatch();
             }
+            stmt.executeBatch();
         } catch (SQLException e) {
             new DaoException(e);
         }
