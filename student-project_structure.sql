@@ -7,14 +7,24 @@ DROP TABLE IF EXISTS jc_passport_office;
 DROP TABLE IF EXISTS jc_register_office;
 DROP TABLE IF EXISTS jc_country_struct;
 DROP TABLE IF EXISTS jc_street;
+DROP TABLE IF EXISTS jc_university;
 
 -- =============================================
 -- Создание таблицы улиц
 -- =============================================
 CREATE TABLE jc_street (
-    street_code  INTEGER      NOT NULL,
+    street_code  INTEGER      	  NOT NULL,
     street_name  VARCHAR(300),
     PRIMARY KEY (street_code)
+);
+
+-- =============================================
+-- Создание таблицы университетов
+-- =============================================
+CREATE TABLE jc_university (
+    university_code  INTEGER      NOT NULL,
+    university_name  VARCHAR(300),
+    PRIMARY KEY (university_code)
 );
 
 -- =============================================
@@ -70,6 +80,8 @@ CREATE TABLE jc_student_order (
     h_building           VARCHAR(10)     NOT NULL,
     h_extension          VARCHAR(10),
     h_apartment          VARCHAR(10),
+    h_university_id      INTEGER         NOT NULL,
+    h_student_number     VARCHAR(30)     NOT NULL,
     
     -- Данные жены
     w_sur_name           VARCHAR(100)    NOT NULL,
@@ -85,6 +97,8 @@ CREATE TABLE jc_student_order (
     w_building           VARCHAR(10)     NOT NULL,
     w_extension          VARCHAR(10),
     w_apartment          VARCHAR(10),
+    w_university_id      INTEGER         NOT NULL,
+    w_student_number     VARCHAR(30)     NOT NULL,
     
     -- Данные о браке
     certificate_id       VARCHAR(20)     NOT NULL,
@@ -96,6 +110,8 @@ CREATE TABLE jc_student_order (
     FOREIGN KEY (w_street_code)        REFERENCES jc_street(street_code) ON DELETE RESTRICT,
     FOREIGN KEY (h_passport_office_id) REFERENCES jc_passport_office(p_office_id) ON DELETE RESTRICT,
     FOREIGN KEY (w_passport_office_id) REFERENCES jc_passport_office(p_office_id) ON DELETE RESTRICT,
+    FOREIGN KEY (h_university_id)      REFERENCES jc_university(university_code) ON DELETE RESTRICT,
+    FOREIGN KEY (w_university_id)      REFERENCES jc_university(university_code) ON DELETE RESTRICT,
     FOREIGN KEY (register_office_id)   REFERENCES jc_register_office(r_office_id) ON DELETE RESTRICT
 );
 

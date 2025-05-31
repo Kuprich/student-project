@@ -82,6 +82,7 @@ public class SaveStudentOrder {
         husband.setIssueDepartment(passportOffice);
         husband.setStudentId("" + (100000 + id));
         husband.setAddress(address);
+        husband.setUniversity(new University(1, "First University"));
 
         Adult wife = new Adult("Петрова", "Вероника", "Алексеевна", LocalDate.of(1998, 3, 12));
         wife.setPassportSeria("" + (200 + id));
@@ -90,6 +91,7 @@ public class SaveStudentOrder {
         wife.setIssueDepartment(passportOffice);
         wife.setStudentId("" + (200000 + id));
         wife.setAddress(address);
+        wife.setUniversity(new University(2, "Second University"));
 
         RegisterOffice r_office =  new RegisterOffice(1, "", "");
 

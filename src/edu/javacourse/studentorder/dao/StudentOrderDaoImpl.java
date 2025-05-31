@@ -14,10 +14,13 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
 
     private static final String INSERT_ORDER = "INSERT INTO jc_student_order(" +
             "student_order_status, student_oder_date, " +
-            "h_sur_name, h_given_name, h_patronymic, h_date_of_birth, h_passport_seria, h_passport_number, h_passport_date, h_passport_office_id, h_post_index, h_street_code, h_building, h_extension, h_apartment, " +
-            "w_sur_name, w_given_name, w_patronymic, w_date_of_birth, w_passport_seria, w_passport_number, w_passport_date, w_passport_office_id, w_post_index, w_street_code, w_building, w_extension, w_apartment, " +
+            "h_sur_name, h_given_name, h_patronymic, h_date_of_birth, h_passport_seria, h_passport_number, h_passport_date, h_passport_office_id, h_post_index, h_street_code, h_building, h_extension, h_apartment, h_university_id, h_student_number, " +
+            "w_sur_name, w_given_name, w_patronymic, w_date_of_birth, w_passport_seria, w_passport_number, w_passport_date, w_passport_office_id, w_post_index, w_street_code, w_building, w_extension, w_apartment, w_university_id, w_student_number, " +
             "certificate_id, register_office_id, marriage_date) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            "VALUES (?, ?, " +
+            "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+            "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+            "?, ?, ?);";
 
     private static final String INSERT_CHILD = "INSERT INTO public.jc_student_child(" +
             "student_order_id, c_sur_name, c_given_name, c_patronymic, c_date_of_birth, c_certificate_number, c_certificate_date, c_register_office_id, c_post_index, c_street_code, c_building, c_extension, c_apartment)" +
@@ -39,19 +42,20 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
 
             con.setAutoCommit(false);
             try {
-                stmt.setInt(1, StudentOrder.StudentOrderStatus.START.ordinal());
-                stmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+                int idx = 1;
+                stmt.setInt(idx++, StudentOrder.StudentOrderStatus.START.ordinal());
+                stmt.setTimestamp(idx++, Timestamp.valueOf(LocalDateTime.now()));
 
                 // husband
-                SetParamsForAdult(stmt, so.getHusband(), 3);
+                idx = SetParamsForAdult(stmt, so.getHusband(), idx);
 
                 // wife
-                SetParamsForAdult(stmt, so.getWife(), 16);
+                idx = SetParamsForAdult(stmt, so.getWife(), idx);
 
                 // register
-                stmt.setString(29, so.getMarriageCertificateId());
-                stmt.setLong(30, so.getMarriageOffice().getOfficeId());
-                stmt.setDate(31, Date.valueOf(so.getMarriageDate()));
+                stmt.setString(idx++, so.getMarriageCertificateId());
+                stmt.setLong(idx++, so.getMarriageOffice().getOfficeId());
+                stmt.setDate(idx++, Date.valueOf(so.getMarriageDate()));
 
                 var sqlResult = stmt.toString();
 
@@ -77,7 +81,7 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
 
     private void saveChildren(Connection con, StudentOrder studentOrder, long studentOrderId) {
         try (PreparedStatement stmt = con.prepareStatement(INSERT_CHILD)) {
-            for(Child child : studentOrder.getChildren()){
+            for (Child child : studentOrder.getChildren()) {
                 stmt.setLong(1, studentOrderId);
                 setParamsForChild(stmt, child, 2);
                 stmt.addBatch();
@@ -88,13 +92,15 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
         }
     }
 
-    private static void SetParamsForAdult(PreparedStatement stmt, Adult adult, int idx) throws SQLException {
+    private static int SetParamsForAdult(PreparedStatement stmt, Adult adult, int idx) throws SQLException {
         idx = setParamsForPerson(stmt, adult, idx);
         stmt.setString(idx++, adult.getPassportSeria());
         stmt.setString(idx++, adult.getPassportNumber());
         stmt.setDate(idx++, Date.valueOf(adult.getIssueDate()));
         stmt.setLong(idx++, adult.getIssueDepartment().getOfficeId());
-        setParamsForAddress(stmt, adult, idx);
+        idx = setParamsForAddress(stmt, adult, idx);
+        idx = setParamsForUniversity(stmt, adult, idx);
+        return idx;
     }
 
     private static int setParamsForPerson(PreparedStatement stmt, Person person, int idx) throws SQLException {
@@ -105,12 +111,19 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
         return idx;
     }
 
-    private static void setParamsForAddress(PreparedStatement stmt, Person person, int idx) throws SQLException {
+    private static int setParamsForAddress(PreparedStatement stmt, Person person, int idx) throws SQLException {
         stmt.setString(idx++, person.getAddress().getPostCode());
         stmt.setLong(idx++, person.getAddress().getStreet().getStreetCode());
         stmt.setString(idx++, person.getAddress().getBuilding());
         stmt.setString(idx++, person.getAddress().getExtension());
-        stmt.setString(idx, person.getAddress().getApartment());
+        stmt.setString(idx++, person.getAddress().getApartment());
+        return idx;
+    }
+
+    private static int setParamsForUniversity(PreparedStatement stmt, Adult adult, int idx) throws SQLException {
+        stmt.setLong(idx++, adult.getUniversity().getUniversityId());
+        stmt.setString(idx++, adult.getUniversity().getUniversityName());
+        return idx;
     }
 
     private static void setParamsForChild(PreparedStatement stmt, Child child, int idx) throws SQLException {
