@@ -25,9 +25,10 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
             "student_order_id, c_sur_name, c_given_name, c_patronymic, c_date_of_birth, c_certificate_number, c_certificate_date, c_register_office_id, c_post_index, c_street_code, c_building, c_extension, c_apartment)" +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-    private static final String SELECT_STUDENT_ORDERS = "SELECT * FROM public.jc_student_order " +
-            "WHERE student_order_status = 0 " +
-            "ORDER BY student_oder_date;";
+    private static final String SELECT_STUDENT_ORDERS = "SELECT so.*, ro.r_office_area_id, ro.r_office_name " +
+            "FROM jc_student_order so " +
+            "INNER JOIN jc_register_office ro ON ro.r_office_id = so.register_office_id " +
+            "WHERE student_order_status = 0 ORDER BY student_oder_date;";
 
 
     private Connection getConnection() throws SQLException {
@@ -142,8 +143,10 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
 
     private void fillMarriage(ResultSet resultSet, StudentOrder studentOrder) throws SQLException {
         studentOrder.setMarriageCertificateId(resultSet.getString("certificate_id"));
-        long moId = resultSet.getLong("register_office_id");
-        studentOrder.setMarriageOffice(new RegisterOffice(moId, "Fake ID", "Fake office name"));
+        long registerOfficeId = resultSet.getLong("register_office_id");
+        String officeAreaId = resultSet.getString("r_office_area_id");
+        String officeName = resultSet.getString("r_office_name");
+        studentOrder.setMarriageOffice(new RegisterOffice(registerOfficeId, officeAreaId, officeName));
         studentOrder.setMarriageDate(resultSet.getDate("marriage_date").toLocalDate());
     }
 
