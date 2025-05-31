@@ -92,10 +92,12 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
              PreparedStatement stmt = con.prepareStatement(SELECT_STUDENT_ORDERS)) {
 
             ResultSet resultSet = stmt.executeQuery();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 StudentOrder studentOrder = new StudentOrder();
                 fillStudentOrder(resultSet, studentOrder);
                 fillMarriage(resultSet, studentOrder);
+                studentOrder.setHusband(fillAdult(resultSet, "h_"));
+                studentOrder.setWife(fillAdult(resultSet, "w_"));
                 result.add(studentOrder);
             }
 
@@ -107,6 +109,35 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
 
         return result;
 
+    }
+
+    private Adult fillAdult(ResultSet resultSet, String prefix) throws SQLException {
+        Adult result = new Adult();
+        result.setSurName(resultSet.getString(prefix + "sur_name"));
+        result.setGivenName(resultSet.getString(prefix + "given_name"));
+        result.setPatronymic(resultSet.getString(prefix + "patronymic"));
+        result.setDateOfBirth(resultSet.getDate(prefix + "date_of_birth").toLocalDate());
+        result.setPassportSeria(resultSet.getString(prefix + "passport_seria"));
+        result.setPassportNumber(resultSet.getString(prefix + "passport_number"));
+        result.setIssueDate(resultSet.getDate(prefix + "passport_date").toLocalDate());
+        result.setIssueDepartment(new PassportOffice(resultSet.getLong(prefix + "passport_office_id"), "Fake", "Fake"));
+
+        Address address = new Address();
+        address.setPostCode(resultSet.getString(prefix + "post_index"));
+        address.setBuilding(resultSet.getString(prefix + "building"));
+        address.setApartment(resultSet.getString(prefix + "apartment"));
+        address.setExtension(resultSet.getString(prefix + "extension"));
+
+        Street street = new Street();
+        street.setStreetCode(resultSet.getLong(prefix + "street_code"));
+
+        address.setStreet(street);
+        result.setAddress(address);
+
+        result.setUniversity(new University(resultSet.getLong(prefix + "university_id"), "Fake university"));
+        result.setStudentId(resultSet.getString(prefix + "student_number"));
+
+        return result;
     }
 
     private void fillMarriage(ResultSet resultSet, StudentOrder studentOrder) throws SQLException {
