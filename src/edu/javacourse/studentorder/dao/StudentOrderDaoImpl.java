@@ -8,6 +8,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StudentOrderDaoImpl implements StudentOrderDao {
@@ -129,12 +130,52 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
         String soIds = "(" + result.stream()
                 .map(so -> "" + so.getStudentOrderId())
                 .collect(Collectors.joining(",")) + ")";
+        Map<Long, StudentOrder> map = result.stream()
+                .collect(Collectors.toMap(so -> so.getStudentOrderId(), so -> so));
+
         try (PreparedStatement stmt = con.prepareStatement(SELECT_CHILDREN + soIds)) {
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()){
-                System.out.println(resultSet.getLong(1) + ":" + resultSet.getString(2));
+                //Child hs = fillChild(resultSet);
+                map.get(resultSet.getLong("student_order_id"))
+                        .addChild(fillChild(resultSet));
             }
         }
+    }
+
+    private Child fillChild(ResultSet resultSet) throws SQLException {
+        Child child = new Child();
+        child.setSurName(resultSet.getString("c_sur_name"));
+        child.setGivenName(resultSet.getString("c_given_name"));
+        child.setPatronymic(resultSet.getString("c_patronymic"));
+        child.setDateOfBirth(resultSet.getDate("c_date_of_birth").toLocalDate());
+        child.setCertificateNumber(resultSet.getString("c_certificate_number"));
+
+        RegisterOffice registerOffice = new RegisterOffice();
+        registerOffice.setOfficeId(resultSet.getLong("c_register_office_id"));
+        registerOffice.setOfficeAreaId(resultSet.getString("r_office_area_id"));
+        registerOffice.setOfficeName(resultSet.getString("r_office_name"));
+
+        child.setIssueDepartment(registerOffice);
+
+        Street street = new Street();
+        street.setStreetCode(resultSet.getLong("c_street_code"));
+        street.setStreetName("");
+
+        Address address = new Address();
+        address.setStreet(street);
+        address.setPostCode(resultSet.getString("c_post_index"));
+        address.setExtension(resultSet.getString("c_extension"));
+        address.setApartment(resultSet.getString("c_apartment"));
+        address.setBuilding(resultSet.getString("c_building"));
+
+        child.setAddress(address);
+
+        child.setIssueDate(resultSet.getDate("c_certificate_date").toLocalDate());
+
+        return child;
+
+
     }
 
     private Adult fillAdult(ResultSet resultSet, String prefix) throws SQLException {
