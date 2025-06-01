@@ -8,6 +8,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StudentOrderDaoImpl implements StudentOrderDao {
 
@@ -32,7 +33,12 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
             "INNER JOIN jc_register_office ro ON ro.r_office_id = so.register_office_id " +
             "INNER JOIN jc_passport_office po_h ON po_h.p_office_id = so.h_passport_office_id " +
             "INNER JOIN jc_passport_office po_w ON po_w.p_office_id = so.w_passport_office_id " +
-            "WHERE student_order_status = 0 ORDER BY student_oder_date";
+            "WHERE student_order_status = ? ORDER BY student_oder_date";
+
+    private static final String SELECT_CHILDREN = "SELECT sch.* , ro.r_office_area_id, ro.r_office_name " +
+            "FROM jc_student_child sch " +
+            "INNER JOIN jc_register_office ro ON ro.r_office_id = sch.c_register_office_id " +
+            "WHERE sch.student_order_id IN ";
 
 
     private Connection getConnection() throws SQLException {
@@ -69,7 +75,7 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
                 var sqlResult = stmt.toString();
 
                 stmt.executeUpdate();
-
+                con.commit();
                 ResultSet generatedKeys = stmt.getGeneratedKeys();
                 long studentOrderId = (generatedKeys.next()) ? generatedKeys.getLong("student_order_id") : -1;
 
@@ -95,6 +101,7 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
 
         try (Connection con = getConnection();
              PreparedStatement stmt = con.prepareStatement(SELECT_STUDENT_ORDERS)) {
+            stmt.setInt(1, StudentOrder.StudentOrderStatus.START.ordinal());
 
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
@@ -106,6 +113,8 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
                 result.add(studentOrder);
             }
 
+            findChildren(con, result);
+
             resultSet.close();
 
         } catch (SQLException e) {
@@ -114,6 +123,18 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
 
         return result;
 
+    }
+
+    private void findChildren(Connection con, List<StudentOrder> result) throws SQLException {
+        String soIds = "(" + result.stream()
+                .map(so -> "" + so.getStudentOrderId())
+                .collect(Collectors.joining(",")) + ")";
+        try (PreparedStatement stmt = con.prepareStatement(SELECT_CHILDREN + soIds)) {
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()){
+                System.out.println(resultSet.getLong(1) + ":" + resultSet.getString(2));
+            }
+        }
     }
 
     private Adult fillAdult(ResultSet resultSet, String prefix) throws SQLException {
@@ -174,6 +195,7 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
                 stmt.addBatch();
             }
             stmt.executeBatch();
+            con.commit();
         } catch (SQLException e) {
             new DaoException(e);
         }
