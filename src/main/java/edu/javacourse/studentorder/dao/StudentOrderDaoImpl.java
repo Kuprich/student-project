@@ -57,12 +57,7 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
             "LIMIT ?";
 
     private Connection getConnection() throws SQLException {
-        Connection connection = DriverManager.getConnection(
-                Config.getProperty(Config.DB_URL),
-                Config.getProperty(Config.DB_LOGIN),
-                Config.getProperty(Config.DB_PASSWORD)
-        );
-        return connection;
+        return ConnectionBuilder.getConnection();
     }
 
     @Override
