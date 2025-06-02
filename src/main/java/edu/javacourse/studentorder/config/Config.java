@@ -10,7 +10,7 @@ public class Config {
     public static final String DB_PASSWORD = "db.password";
     public static final String DB_LIMIT = "db.limit";
 
-    private static Properties properties = new Properties();
+    private static final Properties properties = new Properties();
 
     public static synchronized String getProperty(String name) {
         if (properties.isEmpty()) {

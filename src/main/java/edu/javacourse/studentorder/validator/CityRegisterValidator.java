@@ -16,7 +16,7 @@ public class CityRegisterValidator {
     private static final String EX_T_CODE = "T_ERROR";
 
 
-    private CityRegisterChecker personChecker;
+    private final CityRegisterChecker personChecker;
 
     public CityRegisterValidator() {
         personChecker = new FakeCityRegisterChecker();

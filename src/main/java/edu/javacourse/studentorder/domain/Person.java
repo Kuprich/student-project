@@ -15,7 +15,7 @@ public abstract class Person {
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
     }
-    public Person() {};
+    public Person() {}
 
 
     public String getSurName() {

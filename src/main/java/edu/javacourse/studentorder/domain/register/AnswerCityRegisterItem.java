@@ -43,7 +43,7 @@ public class AnswerCityRegisterItem{
         }
     }
 
-    private CityStatus status;
-    private Person person;
+    private final CityStatus status;
+    private final Person person;
     private CityError error;
 }

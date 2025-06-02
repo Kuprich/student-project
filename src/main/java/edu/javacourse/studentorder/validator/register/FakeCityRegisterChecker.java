@@ -25,8 +25,7 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
     public CityRegisterResponse checkPerson(Person person) throws CityRegisterException, TransportException {
         CityRegisterResponse response = new CityRegisterResponse();
 
-        if (person instanceof Adult){
-            Adult adult = (Adult) person;
+        if (person instanceof Adult adult){
             String ps = adult.getPassportSeria();
             if (ps.equals(GOOD_1) || ps.equals(GOOD_2)){
                 response.setExisting(true);

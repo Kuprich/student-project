@@ -18,11 +18,11 @@ import java.util.List;
 
 public class StudentOrderValidator {
 
-    private ChildrenValidator childrenValidator;
-    private CityRegisterValidator cityRegisterValidator;
-    private StudentValidator studentValidator;
-    private WeddingValidator weddingValidator;
-    private MailSender mailSender;
+    private final ChildrenValidator childrenValidator;
+    private final CityRegisterValidator cityRegisterValidator;
+    private final StudentValidator studentValidator;
+    private final WeddingValidator weddingValidator;
+    private final MailSender mailSender;
 
     public StudentOrderValidator() {
         childrenValidator = new ChildrenValidator();
@@ -41,7 +41,7 @@ public class StudentOrderValidator {
         //while (true) {
         List<StudentOrder> soList = readStudentOrders();
         for (StudentOrder so : soList) {
-            System.out.println("");
+            System.out.println();
             checkOneOrder(so);
         }
 
