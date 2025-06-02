@@ -6,9 +6,15 @@
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="edu.javacourse.studentorder" level="all">
+
+        <Logger name="edu.javacourse.studentorder.dao" level="ALL" additivity="false">
             <AppenderRef ref="File"/>
         </Logger>
+
+        <Logger name="edu.javacourse.studentorder" level="INFO" additivity="false">
+            <AppenderRef ref="File"/>
+        </Logger>
+
         <Root level="error">
             <AppenderRef ref="File"/>
         </Root>

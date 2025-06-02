@@ -26,9 +26,7 @@ public class StudentOrderDaoImplTest extends TestCase {
         try {
             so.getHusband().setSurName(null);
             new StudentOrderDaoImpl().SaveStudentOrder(so);
-        } catch (DaoException e) {
-        }
-
+        } catch (DaoException e) {}
     }
 
     @Test
