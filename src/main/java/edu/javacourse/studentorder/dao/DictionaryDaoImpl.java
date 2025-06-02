@@ -23,7 +23,7 @@ public class DictionaryDaoImpl implements DictionaryDao {
     }
 
     @Override
-    public List<Street> getStreet(String pattern) throws DaoException {
+    public List<Street> getStreets(String pattern) throws DaoException {
         try (Connection con = getConnection();
              PreparedStatement stmt = con.prepareStatement(GET_STREET)) {
             stmt.setString(1, "%" + pattern + "%");

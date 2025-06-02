@@ -2,9 +2,16 @@ package edu.javacourse.studentorder.dao;
 
 //import static org.junit.jupiter.api.Assertions.*;
 
+import edu.javacourse.studentorder.domain.CountryArea;
+import edu.javacourse.studentorder.domain.PassportOffice;
+import edu.javacourse.studentorder.domain.RegisterOffice;
+import edu.javacourse.studentorder.domain.Street;
+import edu.javacourse.studentorder.exception.DaoException;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import javax.swing.plaf.basic.BasicToolBarUI;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -44,18 +51,33 @@ public class DictionaryDaoImplTest {
     }
 
     @Test
-    public void testExample1() {
-        System.out.println("Test1");
+    public void testStreet() throws DaoException {
+        List<Street> streets = new DictionaryDaoImpl().getStreets("пуш");
+        Assert.assertTrue(streets.size() == 1);
     }
 
     @Test
-    public void testExample2() {
-        System.out.println("Test2");
+    public void testPassportOffice() throws DaoException {
+        List<PassportOffice> offices = new DictionaryDaoImpl().getPassportOffices("010020000000");
+        Assert.assertTrue(offices.size() == 2);
     }
 
     @Test
-    public void testExample3() {
-        System.out.println("Test3");
+    public void testRegisterOffice() throws DaoException {
+        List<RegisterOffice> offices = new DictionaryDaoImpl().getRegisterOffices("010010000000");
+        Assert.assertTrue(offices.size() == 2);
+    }
+    @Test
+    public void testArea() throws DaoException {
+        List<CountryArea> c1 = new DictionaryDaoImpl().getAreas("");
+        Assert.assertTrue(c1.size() == 2);
+        List<CountryArea> c2 = new DictionaryDaoImpl().getAreas("020000000000");
+        Assert.assertTrue(c2.size() == 2);
+        List<CountryArea> c3 = new DictionaryDaoImpl().getAreas("020020000000");
+        Assert.assertTrue(c3.size() == 2);
+        List<CountryArea> c4 = new DictionaryDaoImpl().getAreas("020020020000");
+        Assert.assertTrue(c4.size() == 2);
+
     }
 }
 
