@@ -73,7 +73,7 @@ public class SaveStudentOrder {
         return answer;
     }
 
-    static StudentOrder buildStudentOrder(long id) {
+    public static StudentOrder buildStudentOrder(long id) {
         StudentOrder so = new StudentOrder();
         so.setStudentOrderId(id);
         so.setStudentOrderStatus(StudentOrder.StudentOrderStatus.START); //TODO: check it
