@@ -25,7 +25,7 @@ public class StudentOrderDaoImplTest extends TestCase {
         StudentOrder so = SaveStudentOrder.buildStudentOrder(10);
         try {
             so.getHusband().setSurName(null);
-            Long id = new StudentOrderDaoImpl().SaveStudentOrder(so);
+            new StudentOrderDaoImpl().SaveStudentOrder(so);
         } catch (DaoException e) {
         }
 

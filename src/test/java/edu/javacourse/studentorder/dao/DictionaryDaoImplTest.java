@@ -26,7 +26,7 @@ public class DictionaryDaoImplTest {
 
     @Test
     public void testStreet() throws DaoException {
-        logger.info("info");
+        logger.trace("info");
         List<Street> streets = new DictionaryDaoImpl().getStreets("пуш");
         Assert.assertEquals(1, streets.size());
     }
