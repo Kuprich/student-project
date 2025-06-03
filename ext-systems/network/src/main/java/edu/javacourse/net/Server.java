@@ -33,15 +33,16 @@ public class Server {
                 BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
 
-                StringBuilder sb = new StringBuilder("Hello, ");
-                String userName = br.readLine();
+                String line = br.readLine();
 
-                System.out.println("Server got string: " + userName);
+                String[] lineItems = line.split("\\s+");
+
+                String result = "command: " + lineItems[0] + " argument: " + lineItems[1];
+                System.out.println("Server got string: " + line);
 
                 Thread.sleep(2000);
 
-                sb.append(userName);
-                bw.write(sb.toString());
+                bw.write(result);
                 bw.newLine();
                 bw.flush();
 

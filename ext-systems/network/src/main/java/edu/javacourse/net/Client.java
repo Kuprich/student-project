@@ -7,11 +7,19 @@ public class Client {
     public static void main(String[] args) throws IOException {
 
         for (int i = 0; i < 10; i++) {
-            new SimpleThread().start();
+            new SimpleClient(i).start();
         }
     }
 
-    public static class SimpleThread extends Thread {
+    public static class SimpleClient extends Thread {
+
+        private final static String[] COMMANDS = new String[]{"HELLO", "MORNING", "DAY", "EVENING"};
+        private int cmdNumber;
+
+        public SimpleClient(int cmdNumber) {
+            this.cmdNumber = cmdNumber;
+        }
+
         @Override
         public void run() {
             try {
@@ -20,7 +28,7 @@ public class Client {
                 BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
 
-                String str = "User";
+                String str = COMMANDS[cmdNumber % COMMANDS.length] + " " + "User";
 
                 bw.write(str);
                 bw.newLine();
