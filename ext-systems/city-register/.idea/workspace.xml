@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 85">
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" />
+    <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 86">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/config/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/dao/ConnectionBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/dao.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/edu/javacourse/city/dao/PersonCheckDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/register_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/register_data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/dao/PersonCheckDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/dao/PersonCheckDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/domain/PersonRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/domain/PersonRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -47,17 +54,94 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.PersonCheckDaoTest.checkPerson.executor": "Run",
+    "JUnit.PersonCheckDaoTest.checkPerson_without_Extension_and_Apartment.executor": "Debug",
+    "JUnit.PersonCheckDaoTest.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Kupri4/IdeaProjects/learn-java-create-project/ext-systems/city-register/src/main/resources",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "editor.breadcrumbs"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Kupri4\IdeaProjects\learn-java-create-project\ext-systems\city-register\src\main\resources" />
+      <recent name="C:\Users\Kupri4\IdeaProjects\learn-java-create-project\ext-systems\city-register\src\main\java\edu\javacourse\city" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="edu.javacourse.city.dao" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="edu.javacourse.city.dao" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.PersonCheckDaoTest">
+    <configuration name="PersonCheckDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="city-register" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.javacourse.city.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.javacourse.city.dao" />
+      <option name="MAIN_CLASS_NAME" value="edu.javacourse.city.dao.PersonCheckDaoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PersonCheckDaoTest.checkPerson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="city-register" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.javacourse.city.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.javacourse.city.dao" />
+      <option name="MAIN_CLASS_NAME" value="edu.javacourse.city.dao.PersonCheckDaoTest" />
+      <option name="METHOD_NAME" value="checkPerson" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PersonCheckDaoTest.checkPerson_without_Extension_and_Apartment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="city-register" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.javacourse.city.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.javacourse.city.dao" />
+      <option name="MAIN_CLASS_NAME" value="edu.javacourse.city.dao.PersonCheckDaoTest" />
+      <option name="METHOD_NAME" value="checkPerson_without_Extension_and_Apartment" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.PersonCheckDaoTest" />
+        <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson_without_Extension_and_Apartment" />
+        <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="" />
@@ -82,12 +166,21 @@
       <option name="project" value="LOCAL" />
       <updated>1748940691545</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Lesson 86">
+      <option name="closed" value="true" />
+      <created>1748946367123</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748946367123</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lesson 84" />
     <MESSAGE value="Lesson 85" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 85" />
+    <MESSAGE value="Lesson 86" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 86" />
   </component>
 </project>

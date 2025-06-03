@@ -7,15 +7,17 @@ public class PersonRequest {
     private String givenName;
     private String patronymic;
     private LocalDate dateOfBirth;
+    private int streetCode;
     private String building;
     private String extension;
     private String apartment;
 
-    public PersonRequest(String surName, String givenName, String patronymic, LocalDate dateOfBirth, String building, String extension, String apartment) {
+    public PersonRequest(String surName, String givenName, String patronymic,  LocalDate dateOfBirth, int streetCode, String building, String extension, String apartment) {
         this.surName = surName;
         this.givenName = givenName;
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
+        this.streetCode = streetCode;
         this.building = building;
         this.extension = extension;
         this.apartment = apartment;
@@ -78,5 +80,13 @@ public class PersonRequest {
 
     public void setApartment(String apartment) {
         this.apartment = apartment;
+    }
+
+    public int getStreetCode() {
+        return streetCode;
+    }
+
+    public void setStreetCode(int streetCode) {
+        this.streetCode = streetCode;
     }
 }

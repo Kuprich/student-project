@@ -31,7 +31,6 @@
             <scope>test</scope>
         </dependency>
 
-
         <!-- Код → SLF4J API → log4j-slf4j2-impl → Log4j2 Core → Запись в файл -->
         <!-- SLF4J API -->
         <dependency>
