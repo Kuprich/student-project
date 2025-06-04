@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 87">
-      <change afterPath="$PROJECT_DIR$/../network/src/main/java/edu/javacourse/greet/EveningGreet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../network/src/main/java/edu/javacourse/greet/MorningGreet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../network/src/main/java/edu/javacourse/net/Greetable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../network/src/main/resources/server.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../network/src/main/java/edu/javacourse/net/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../network/src/main/java/edu/javacourse/net/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/edu/javacourse/net/SimpleSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -48,25 +45,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.PersonCheckDaoTest.checkPerson.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PersonCheckDaoTest.checkPerson_without_Extension_and_Apartment.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PersonCheckDaoTest.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Kupri4/IdeaProjects/learn-java-create-project/ext-systems/city-register/src/main/resources&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.breadcrumbs&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.PersonCheckDaoTest.checkPerson.executor": "Run",
+    "JUnit.PersonCheckDaoTest.checkPerson_without_Extension_and_Apartment.executor": "Run",
+    "JUnit.PersonCheckDaoTest.executor": "Run",
+    "JUnit.SimpleSocket.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Kupri4/IdeaProjects/learn-java-create-project/ext-systems/city-register/src/main/resources",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.breadcrumbs"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Kupri4\IdeaProjects\learn-java-create-project\ext-systems\city-register\src\main\resources" />
@@ -82,7 +80,7 @@
       <recent name="edu.javacourse.city.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PersonCheckDaoTest">
+  <component name="RunManager" selected="JUnit.SimpleSocket">
     <configuration name="PersonCheckDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="city-register" />
       <extension name="coverage">
@@ -130,8 +128,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SimpleSocket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="city-register" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.javacourse.net.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.javacourse.net" />
+      <option name="MAIN_CLASS_NAME" value="edu.javacourse.net.SimpleSocket" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SimpleSocket" />
         <item itemvalue="JUnit.PersonCheckDaoTest" />
         <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson_without_Extension_and_Apartment" />
         <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson" />
