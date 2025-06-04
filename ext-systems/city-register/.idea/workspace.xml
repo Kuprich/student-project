@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 96">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+    <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 97">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/web/CheckPersonServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/web/TestServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +55,8 @@
     "JUnit.PersonCheckDaoTest.executor": "Run",
     "JUnit.SimpleSocket.executor": "Run",
     "Maven.city-register [clean,package].executor": "Run",
+    "Maven.city-register [clean].executor": "Run",
+    "Maven.city-register [package].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -201,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749045229574</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Lesson 97">
+      <option name="closed" value="true" />
+      <created>1749046320980</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1749046320980</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -210,6 +223,7 @@
     <MESSAGE value="Lesson 86" />
     <MESSAGE value="Lesson 87" />
     <MESSAGE value="Lesson 96" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 96" />
+    <MESSAGE value="Lesson 97" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 97" />
   </component>
 </project>
