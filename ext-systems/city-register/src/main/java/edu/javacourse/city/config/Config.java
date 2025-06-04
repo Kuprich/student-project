@@ -10,6 +10,13 @@ public class Config {
     public static final String DB_PASSWORD = "db.password";
     public static final String DB_LIMIT = "db.limit";
 
+    static {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     private static final Properties properties = new Properties();
 
     public static synchronized String getProperty(String name) {
