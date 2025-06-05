@@ -1,0 +1,16 @@
+<Context>
+    <Resource
+            name="jdbc/cityRegister"
+            type="javax.sql.DataSource"
+            driverClassName="org.postgresql.Driver"
+            url="jdbc:postgresql://localhost:5434/city-register"
+            username="postgres"
+            password="postgres"
+            maxTotal="4"
+            maxIdle="2"
+            maxWaitMillis="5000"
+            validationQuery="SELECT 1"
+            logAbandoned="true"
+            suspectTimeout="60"
+    />
+</Context>

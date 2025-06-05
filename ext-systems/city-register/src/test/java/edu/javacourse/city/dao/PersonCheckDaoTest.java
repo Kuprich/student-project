@@ -29,6 +29,7 @@ public class PersonCheckDaoTest {
         request.setApartment("15");
 
         PersonCheckDao checker = new PersonCheckDao();
+        checker.setConnectionBuilder(new ConnectionBuilderImpl());
         try {
             PersonResponse response = checker.checkPerson(request);
             Assert.assertTrue(response.isRegistered());
@@ -50,6 +51,7 @@ public class PersonCheckDaoTest {
         request.setBuilding("10");
 
         PersonCheckDao checker = new PersonCheckDao();
+        checker.setConnectionBuilder(new ConnectionBuilderImpl());
         try {
             PersonResponse response = checker.checkPerson(request);
             Assert.assertFalse(response.isRegistered());
