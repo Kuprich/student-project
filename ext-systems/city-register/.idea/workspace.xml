@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 101">
+    <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 102">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/web/CheckPersonService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/web/CheckPersonServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/web/CheckPersonServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749125250356</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Lesson 102">
+      <option name="closed" value="true" />
+      <created>1749149100836</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1749149100836</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -259,6 +268,7 @@
     <MESSAGE value="Lesson 99" />
     <MESSAGE value="Lesson 100" />
     <MESSAGE value="Lesson 101" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 101" />
+    <MESSAGE value="Lesson 102" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 102" />
   </component>
 </project>
