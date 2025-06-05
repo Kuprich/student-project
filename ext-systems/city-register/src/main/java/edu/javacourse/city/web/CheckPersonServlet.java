@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @WebServlet(name="CheckPersonServlet", urlPatterns = {"/checkPerson"})
 public class CheckPersonServlet extends HttpServlet {
@@ -33,17 +34,16 @@ public class CheckPersonServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
 
-        String surname = req.getParameter("surname");
         PersonRequest preq = new PersonRequest();
 
-        preq.setSurName(surname);
-        preq.setGivenName("Иван");
-        preq.setPatronymic("Иванович");
-        preq.setDateOfBirth(LocalDate.of(1980, 05, 15));
-        preq.setStreetCode(1);
-        preq.setBuilding("10");
-        preq.setExtension("А");
-        preq.setApartment("15");
+        preq.setSurName(req.getParameter("surname"));
+        preq.setGivenName(req.getParameter("givenName"));
+        preq.setPatronymic(req.getParameter("patronymic"));
+        preq.setDateOfBirth(LocalDate.parse(req.getParameter("dateOfBirth"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        preq.setStreetCode(Integer.parseInt(req.getParameter("streetCode")));
+        preq.setBuilding(req.getParameter("building"));
+        preq.setExtension(req.getParameter("extension"));
+        preq.setApartment(req.getParameter("apartment"));
 
         try {
             PersonResponse presp = checker.checkPerson(preq);
