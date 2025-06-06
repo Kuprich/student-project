@@ -39,6 +39,30 @@ public class PersonCheckDaoTest {
         }
     }
 
+    @org.junit.Test
+    public void checkPerson_Petrova() {
+        PersonRequest request = new PersonRequest();
+
+        request.setSurName("Петрова");
+        request.setGivenName("Анна");
+        request.setPatronymic("Петровна");
+        request.setDateOfBirth(LocalDate.of(2016, 04, 25));
+        request.setStreetCode(1);
+        request.setBuilding("10");
+        request.setExtension("А");
+        request.setApartment("15");
+
+        PersonCheckDao checker = new PersonCheckDao();
+        checker.setConnectionBuilder(new ConnectionBuilderImpl());
+        try {
+            PersonResponse response = checker.checkPerson(request);
+            Assert.assertTrue(response.isRegistered());
+            Assert.assertFalse(response.isTemporal());
+        } catch (PersonCheckException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Test
     public void checkPerson_without_Extension_and_Apartment() {
         PersonRequest request = new PersonRequest();

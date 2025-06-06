@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 104">
+    <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 106">
+      <change afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/domain/register/CityRegisterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/util/LocalDateAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/domain/PersonRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/domain/PersonRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/web/CheckPersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/javacourse/city/web/CheckPersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/register_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/register_data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/javacourse/city/dao/PersonCheckDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/javacourse/city/dao/PersonCheckDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/SaveStudentOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/SaveStudentOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/domain/register/CityRegisterResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/domain/register/CityRegisterResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/CityRegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/CityRegisterValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/register/FakeCityRegisterChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/test/java/edu/javacourse/studentorder/validator/register/FakeCityRegisterChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/register/RealCityRegisterChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/register/RealCityRegisterChecker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,29 +55,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.PersonCheckDaoTest.checkPerson.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PersonCheckDaoTest.checkPerson_without_Extension_and_Apartment.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PersonCheckDaoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SimpleSocket.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.city-register [clean,package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.city-register [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.city-register [package].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Kupri4/IdeaProjects/learn-java-create-project/ext-systems/city-register/src/main/resources&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.breadcrumbs&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.PersonCheckDaoTest.checkPerson.executor": "Run",
+    "JUnit.PersonCheckDaoTest.checkPerson_Petrova.executor": "Run",
+    "JUnit.PersonCheckDaoTest.checkPerson_with_Extension_and_Apartment.executor": "Run",
+    "JUnit.PersonCheckDaoTest.checkPerson_with_Extension_and_Apartment_Petrova.executor": "Run",
+    "JUnit.PersonCheckDaoTest.checkPerson_without_Extension_and_Apartment.executor": "Run",
+    "JUnit.PersonCheckDaoTest.executor": "Run",
+    "JUnit.SimpleSocket.executor": "Run",
+    "Maven.city-register [clean,package].executor": "Run",
+    "Maven.city-register [clean].executor": "Run",
+    "Maven.city-register [package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Remote JVM Debug.Unnamed.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Kupri4/IdeaProjects/learn-java-create-project/ext-systems/city-register/src/main/resources",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.breadcrumbs"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Kupri4\IdeaProjects\learn-java-create-project\ext-systems\city-register\src\main\resources" />
@@ -86,7 +97,7 @@
       <recent name="edu.javacourse.city.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PersonCheckDaoTest">
+  <component name="RunManager" selected="JUnit.PersonCheckDaoTest.checkPerson_Petrova">
     <configuration name="PersonCheckDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="city-register" />
       <extension name="coverage">
@@ -97,12 +108,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="edu.javacourse.city.dao" />
       <option name="MAIN_CLASS_NAME" value="edu.javacourse.city.dao.PersonCheckDaoTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PersonCheckDaoTest.checkPerson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PersonCheckDaoTest.checkPerson_Petrova" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="city-register" />
       <extension name="coverage">
         <pattern>
@@ -112,7 +124,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="edu.javacourse.city.dao" />
       <option name="MAIN_CLASS_NAME" value="edu.javacourse.city.dao.PersonCheckDaoTest" />
-      <option name="METHOD_NAME" value="checkPerson" />
+      <option name="METHOD_NAME" value="checkPerson_Petrova" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PersonCheckDaoTest.checkPerson_with_Extension_and_Apartment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="city-register" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.javacourse.city.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.javacourse.city.dao" />
+      <option name="MAIN_CLASS_NAME" value="edu.javacourse.city.dao.PersonCheckDaoTest" />
+      <option name="METHOD_NAME" value="checkPerson_with_Extension_and_Apartment" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PersonCheckDaoTest.checkPerson_with_Extension_and_Apartment_Petrova" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="city-register" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.javacourse.city.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.javacourse.city.dao" />
+      <option name="MAIN_CLASS_NAME" value="edu.javacourse.city.dao.PersonCheckDaoTest" />
+      <option name="METHOD_NAME" value="checkPerson_with_Extension_and_Apartment_Petrova" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,27 +178,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SimpleSocket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
       <module name="city-register" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.javacourse.net.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.javacourse.net" />
-      <option name="MAIN_CLASS_NAME" value="edu.javacourse.net.SimpleSocket" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8080" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8080" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson_Petrova" />
+      <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson_with_Extension_and_Apartment" />
+      <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson_with_Extension_and_Apartment_Petrova" />
+      <item itemvalue="JUnit.PersonCheckDaoTest" />
+      <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson_without_Extension_and_Apartment" />
+      <item itemvalue="Remote JVM Debug.Unnamed" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PersonCheckDaoTest" />
-        <item itemvalue="JUnit.SimpleSocket" />
+        <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson_Petrova" />
+        <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson_with_Extension_and_Apartment_Petrova" />
+        <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson_with_Extension_and_Apartment" />
         <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson_without_Extension_and_Apartment" />
-        <item itemvalue="JUnit.PersonCheckDaoTest.checkPerson" />
+        <item itemvalue="JUnit.PersonCheckDaoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +322,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749201596538</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Lesson 106">
+      <option name="closed" value="true" />
+      <created>1749223823244</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1749223823244</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -298,6 +358,23 @@
     <MESSAGE value="Lesson 102" />
     <MESSAGE value="Lesson 103" />
     <MESSAGE value="Lesson 104" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 104" />
+    <MESSAGE value="Lesson 106" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 106" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/edu/javacourse/city/dao/PersonCheckDaoTest.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/javacourse/city/dao/PersonCheckDao.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -81,9 +81,9 @@ public class SaveStudentOrder {
         so.setMarriageDate(LocalDate.of(2016, 7, 4));
         so.setMarriageOffice(new RegisterOffice(1, "", ""));
 
-        Address address = new Address(new Street(1, "ул. Иванова"), "123", "12", "", "142");
+        Address address = new Address(new Street(1, "ул. Иванова"), "10", "А", "15", "");
         PassportOffice passportOffice = new PassportOffice(1, "010001010", "Office name");
-        Adult husband = new Adult("Петров", "Виктор", "Сергеевич", LocalDate.of(1997, 8, 24));
+        Adult husband = new Adult("Иванов", "Иван", "Иванович", LocalDate.of(1980, 5, 15));
         husband.setPassportSeria("" + (1000 + id));
         husband.setPassportNumber("" + (100000 + id));
         husband.setIssueDate(LocalDate.of(2017, 9, 15));
@@ -92,7 +92,7 @@ public class SaveStudentOrder {
         husband.setAddress(address);
         husband.setUniversity(new University(1, "First University"));
 
-        Adult wife = new Adult("Петрова", "Вероника", "Алексеевна", LocalDate.of(1998, 3, 12));
+        Adult wife = new Adult("Петрова", "Анна", "Николаевна", LocalDate.of(1975, 11, 23));
         wife.setPassportSeria("" + (200 + id));
         wife.setPassportNumber("" + (200000 + id));
         wife.setIssueDate(LocalDate.of(2018, 4, 5));
@@ -103,13 +103,13 @@ public class SaveStudentOrder {
 
         RegisterOffice r_office =  new RegisterOffice(1, "", "");
 
-        Child child1 = new Child("Петрова", "Ирина", "Алексеевна", LocalDate.of(2018, 3, 12));
+        Child child1 = new Child("Иванова", "Мария", "Ивановна", LocalDate.of(2015, 02, 14));
         child1.setCertificateNumber("" + (300000 + id));
         child1.setIssueDate(LocalDate.of(2018, 4, 5));
         child1.setIssueDepartment(r_office);
         child1.setAddress(address);
 
-        Child child2 = new Child("Петров", "Игорь", "Алексеевич", LocalDate.of(2018, 3, 12));
+        Child child2 = new Child("Петрова", "Анна", "Петровна", LocalDate.of(2016, 04, 25));
         child2.setCertificateNumber("" + (300000 + id));
         child2.setIssueDate(LocalDate.of(2018, 4, 5));
         child2.setIssueDepartment(r_office);

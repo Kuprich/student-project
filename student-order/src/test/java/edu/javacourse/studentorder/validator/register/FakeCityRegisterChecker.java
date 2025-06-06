@@ -28,11 +28,11 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
         if (person instanceof Adult adult){
             String ps = adult.getPassportSeria();
             if (ps.equals(GOOD_1) || ps.equals(GOOD_2)){
-                response.setExisting(true);
+                response.setRegistered(true);
                 response.setTemporal(false);
             }
             if (ps.equals(BAD_1) || ps.equals(BAD_2)){
-                response.setExisting(false);
+                response.setRegistered(false);
             }
             if (ps.equals(ERROR_1) || ps.equals(ERROR_2)){
                 CityRegisterException exception = new CityRegisterException("1", "GRN Error");
@@ -44,7 +44,7 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
             }
         }
         if (person instanceof Child){
-            response.setExisting(true);
+            response.setRegistered(true);
             response.setTemporal(true);
 
         }
