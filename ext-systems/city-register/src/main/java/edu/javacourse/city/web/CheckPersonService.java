@@ -1,5 +1,6 @@
 package edu.javacourse.city.web;
 
+import edu.javacourse.city.domain.PersonRequest;
 import edu.javacourse.city.domain.PersonResponse;
 
 import javax.ws.rs.*;
@@ -10,12 +11,12 @@ public class CheckPersonService {
     public CheckPersonService() {
     }
 
-    @GET
-    @Path("/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public PersonResponse checkPerson(@PathParam("id") int simpleId,
-                                      @QueryParam("name") String simpleName){
-        return new PersonResponse(false, false);
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public PersonResponse checkPerson(PersonRequest request){
+        System.out.println(request.toString());
+        return new PersonResponse();
     }
 
 }
