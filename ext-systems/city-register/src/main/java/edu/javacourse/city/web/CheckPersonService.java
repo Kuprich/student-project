@@ -1,8 +1,8 @@
 package edu.javacourse.city.web;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import edu.javacourse.city.domain.PersonResponse;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/check")
@@ -11,9 +11,11 @@ public class CheckPersonService {
     }
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String check(){
-        return "check person method";
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public PersonResponse checkPerson(@PathParam("id") int simpleId,
+                                      @QueryParam("name") String simpleName){
+        return new PersonResponse(false, false);
     }
 
 }
