@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 106">
-      <change afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/domain/register/CityRegisterRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/util/LocalDateAdapter.java" afterDir="false" />
+    <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 107">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/register_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/register_data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/javacourse/city/dao/PersonCheckDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/javacourse/city/dao/PersonCheckDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../student-order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/SaveStudentOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/SaveStudentOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/domain/register/CityRegisterResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/domain/register/CityRegisterResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/exception/TransportException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/CityRegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/CityRegisterValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/register/FakeCityRegisterChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/test/java/edu/javacourse/studentorder/validator/register/FakeCityRegisterChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/register/CityRegisterChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/register/CityRegisterChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/register/RealCityRegisterChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/java/edu/javacourse/studentorder/validator/register/RealCityRegisterChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/src/main/resources/dao.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../student-order/src/test/java/edu/javacourse/studentorder/validator/register/FakeCityRegisterChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../student-order/src/test/java/edu/javacourse/studentorder/validator/register/FakeCityRegisterChecker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749223823244</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Lesson 107">
+      <option name="closed" value="true" />
+      <created>1749234670646</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1749234670646</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -359,7 +364,8 @@
     <MESSAGE value="Lesson 103" />
     <MESSAGE value="Lesson 104" />
     <MESSAGE value="Lesson 106" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 106" />
+    <MESSAGE value="Lesson 107" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 107" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -5,7 +5,6 @@ import edu.javacourse.studentorder.domain.Child;
 import edu.javacourse.studentorder.domain.register.CityRegisterResponse;
 import edu.javacourse.studentorder.domain.Person;
 import edu.javacourse.studentorder.exception.CityRegisterException;
-import edu.javacourse.studentorder.exception.TransportException;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker {
 
@@ -22,7 +21,7 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
     public static final String T_ERROR_2 = "2003";
 
 
-    public CityRegisterResponse checkPerson(Person person) throws CityRegisterException, TransportException {
+    public CityRegisterResponse checkPerson(Person person) throws CityRegisterException {
         CityRegisterResponse response = new CityRegisterResponse();
 
         if (person instanceof Adult adult){
