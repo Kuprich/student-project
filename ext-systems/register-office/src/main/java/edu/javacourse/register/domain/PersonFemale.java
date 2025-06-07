@@ -1,29 +1,31 @@
 package edu.javacourse.register.domain;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @DiscriminatorValue("2")
 public class PersonFemale extends Person{
-//    private List<MarriageCertificate> marriageCertificates;
-//
-//    private BirthCertificate birthCertificate;
-//
-//    public List<MarriageCertificate> getMarriageCertificates() {
-//        return marriageCertificates;
-//    }
-//
-//    public void setMarriageCertificates(List<MarriageCertificate> marriageCertificates) {
-//        this.marriageCertificates = marriageCertificates;
-//    }
-//
-//    public BirthCertificate getBirthCertificate() {
-//        return birthCertificate;
-//    }
-//
-//    public void setBirthCertificate(BirthCertificate birthCertificate) {
-//        this.birthCertificate = birthCertificate;
-//    }
+
+    @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY, mappedBy = "wife")
+    private List<MarriageCertificate> marriageCertificates;
+
+    @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY, mappedBy = "mother")
+    private List<BirthCertificate> birthCertificates;
+
+    public List<MarriageCertificate> getMarriageCertificates() {
+        return marriageCertificates;
+    }
+
+    public void setMarriageCertificates(List<MarriageCertificate> marriageCertificates) {
+        this.marriageCertificates = marriageCertificates;
+    }
+
+    public List<BirthCertificate> getBirthCertificates() {
+        return birthCertificates;
+    }
+
+    public void setBirthCertificates(List<BirthCertificate> birthCertificates) {
+        this.birthCertificates = birthCertificates;
+    }
 }
