@@ -1,35 +1,41 @@
 package edu.javacourse.register.domain;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@Entity
+@Table(name = "ro_person")
 public class Person {
-    private long person_id;
-    private String firstName;
-    private String lastName;
-    private String patronymic;
-    private LocalDate dateOfBirth;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "person_id")
+    private long personId;
+
+    @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY, mappedBy = "person")
     private List<Passport> passports;
+
+    @Column(name="first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "patronymic")
+    private String patronymic;
+
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
 
     public Person() {
     }
 
-    public Person(long person_id, String firstName, String lastName, String patronymic, LocalDate dateOfBirth, List<Passport> passports) {
-        this.person_id = person_id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.patronymic = patronymic;
-        this.dateOfBirth = dateOfBirth;
-        this.passports = passports;
+    public long getPersonId() {
+        return personId;
     }
 
-
-    public long getPerson_id() {
-        return person_id;
-    }
-
-    public void setPerson_id(long person_id) {
-        this.person_id = person_id;
+    public void setPersonId(long personId) {
+        this.personId = personId;
     }
 
     public String getFirstName() {
