@@ -1,9 +1,10 @@
-drop table if exists ro_person;
 drop table if exists ro_passport;
+drop table if exists ro_person;
 
 
 create table ro_person (
 	person_id serial,
+	gender smallint not null,
 	first_name varchar(100) not null,
 	last_name varchar(100) not null,
 	patronymic varchar(100) not null,
