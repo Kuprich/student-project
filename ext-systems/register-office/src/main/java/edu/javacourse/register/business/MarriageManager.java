@@ -35,15 +35,18 @@ public class MarriageManager {
     public MarriageResponse findMarriageCertificate(MarriageRequest request) {
         LOGGER.info("MarriageManager.findMarriageCertificate called");
 
-        Person p1 = createPerson(1);
-        Person p2 = createPerson(1);
+      //  Person p1 = createPerson(1);
+      //  Person p2 = createPerson(1);
 
-        long pId1 = personDao.addPerson(p1);
-        long pId2 = personDao.addPerson(p2);
+        //long pId1 = personDao.addPerson(p1);
+        //long pId2 = personDao.addPerson(p2);
 
-        MarriageCertificate cer = getMarriageCertificate();
-        marriageDao.saveAndFlush(cer);
-        marriageDao.findAll();
+        //MarriageCertificate cer = getMarriageCertificate();
+        //marriageDao.saveAndFlush(cer);
+        //marriageDao.findAll();
+
+        List<MarriageCertificate> certificates1 = marriageDao.findByNumber("12345");
+        List<MarriageCertificate> certificates2 = marriageDao.findByNum("12345");
 
         return new MarriageResponse();
     }
