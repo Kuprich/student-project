@@ -22,4 +22,10 @@ public class PersonDao {
                 .setParameter("personId", personId)
                 .getResultList();
     }
+
+    public long addPerson(Person person) {
+        entityManager.persist(person);
+        entityManager.flush();
+        return person.getPersonId();
+    }
 }

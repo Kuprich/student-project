@@ -20,7 +20,7 @@ import java.util.List;
                 "LEFT JOIN FETCH p.birthCertificate " +
                 "WHERE p.personId = :personId")
 })
-public class Person {
+public abstract class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
