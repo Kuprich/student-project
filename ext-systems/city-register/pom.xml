@@ -35,7 +35,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax/javaee-api -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
