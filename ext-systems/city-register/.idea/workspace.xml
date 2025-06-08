@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0155db26-57d1-405d-a8ef-bdb155349351" name="Changes" comment="Lesson 107">
-      <change afterPath="$PROJECT_DIR$/../register-office/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../register-office/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../register-office/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../student/src/main/java/edu/javacourse/student/rest/StudentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../student/src/main/java/edu/javacourse/student/view/LocalDateAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../student/src/main/java/edu/javacourse/student/view/StudentRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../student/src/main/java/edu/javacourse/student/view/StudentResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
