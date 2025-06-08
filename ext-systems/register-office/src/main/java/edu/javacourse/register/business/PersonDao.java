@@ -17,6 +17,13 @@ public class PersonDao {
     }
 
     public List<Person> findPeople () {
-        return entityManager.createQuery("select p from Person p").getResultList();
+        return entityManager.createNamedQuery("person.findPeople")
+                .getResultList();
+    }
+
+    public List<Person> findPerson (long personId) {
+        return (entityManager.createNamedQuery("person.findPerson"))
+                .setParameter("personId", personId)
+                .getResultList();
     }
 }
