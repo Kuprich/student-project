@@ -1,4 +1,4 @@
-package edu.javacourse.register.business;
+package edu.javacourse.register.dao;
 
 import edu.javacourse.register.domain.Person;
 

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class StudentOrderDaoImpl implements StudentOrderDao {
 
-    private static final Logger logger = LoggerFactory.getLogger(StudentOrderDaoImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentOrderDaoImpl.class);
 
     private static final String INSERT_ORDER = "INSERT INTO jc_student_order(" +
             "student_order_status, student_oder_date, " +
@@ -69,7 +69,7 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
         try (Connection con = getConnection();
              PreparedStatement stmt = con.prepareStatement(INSERT_ORDER, new String[]{"student_order_id"})) {
             con.setAutoCommit(false);
-            logger.info("SO:{}", so);
+            LOGGER.info("SO:{}", so);
             try {
                 int idx = 1;
                 stmt.setInt(idx++, StudentOrder.StudentOrderStatus.START.ordinal());
@@ -98,14 +98,14 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
 
                 return -1L;
             } catch (SQLException e) {
-                logger.error(e.getMessage(), e);
+                LOGGER.error(e.getMessage(), e);
                 con.rollback();
                 throw e;
             }
 
 
         } catch (SQLException e) {
-            logger.error(e.getMessage(), e);
+            LOGGER.error(e.getMessage(), e);
             throw new DaoException(e);
         }
     }
@@ -135,7 +135,7 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
             resultSet.close();
 
         } catch (SQLException e) {
-            logger.error(e.getMessage(), e);
+            LOGGER.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
 
@@ -171,7 +171,7 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
             resultSet.close();
 
         } catch (SQLException e) {
-            logger.error(e.getMessage(), e);
+            LOGGER.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
 
@@ -299,7 +299,7 @@ public class StudentOrderDaoImpl implements StudentOrderDao {
             stmt.executeBatch();
             con.commit();
         } catch (SQLException e) {
-            logger.error(e.getMessage(), e);
+            LOGGER.error(e.getMessage(), e);
             new DaoException(e);
         }
     }
