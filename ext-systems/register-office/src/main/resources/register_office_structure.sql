@@ -1,3 +1,4 @@
+drop table if exists ro_marriage_certificate;
 drop table if exists ro_birth_certificate;
 drop table if exists ro_passport;
 drop table if exists ro_person;
@@ -35,7 +36,7 @@ create table ro_birth_certificate (
 	foreign key (person_id) references ro_person(person_id) on delete restrict,
 	foreign key (mother_id) references ro_person(person_id) on delete restrict,
 	foreign key (father_id) references ro_person(person_id) on delete restrict
-)
+);
 
 create table ro_marriage_certificate (
 	marriage_certificate_id serial,
@@ -45,7 +46,7 @@ create table ro_marriage_certificate (
 	wife_id integer,
 	active boolean,
 	end_date date,
-	primary key (birth_certificate_id),
-	foreign key (mother_id) references ro_person(person_id) on delete restrict,
-	foreign key (father_id) references ro_person(person_id) on delete restrict
+	primary key (marriage_certificate_id),
+	foreign key (wife_id) references ro_person(person_id) on delete restrict,
+	foreign key (husband_id) references ro_person(person_id) on delete restrict
 );

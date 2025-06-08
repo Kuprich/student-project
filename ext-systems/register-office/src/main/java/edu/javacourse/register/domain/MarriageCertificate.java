@@ -16,7 +16,7 @@ public class MarriageCertificate {
     private String number;
 
     @Column(name = "issue_date")
-    private String issueDate;
+    private LocalDate issueDate;
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "husband_id")
@@ -36,7 +36,7 @@ public class MarriageCertificate {
     public MarriageCertificate() {
     }
 
-    public MarriageCertificate(long marriageCertificateId, String number, String issueDate, PersonMale husband, PersonFemale wife, boolean isActive, LocalDate endDate) {
+    public MarriageCertificate(long marriageCertificateId, String number, LocalDate issueDate, PersonMale husband, PersonFemale wife, boolean isActive, LocalDate endDate) {
         this.marriageCertificateId = marriageCertificateId;
         this.number = number;
         this.issueDate = issueDate;
@@ -60,14 +60,6 @@ public class MarriageCertificate {
 
     public void setNumber(String number) {
         this.number = number;
-    }
-
-    public String getIssueDate() {
-        return issueDate;
-    }
-
-    public void setIssueDate(String issueDate) {
-        this.issueDate = issueDate;
     }
 
     public PersonMale getHusband() {
@@ -100,5 +92,13 @@ public class MarriageCertificate {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public LocalDate getIssueDate() {
+        return issueDate;
+    }
+
+    public void setIssueDate(LocalDate issueDate) {
+        this.issueDate = issueDate;
     }
 }
