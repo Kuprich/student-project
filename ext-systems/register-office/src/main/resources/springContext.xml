@@ -10,4 +10,29 @@
 
     <context:component-scan base-package="edu.javacourse.register"/>
 
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://localhost:5434/register-office"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="postgres"/>
+    </bean>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- Где искать Entity-классы -->
+        <property name="packagesToScan" value="edu.javacourse.register.domain"/>
+        <!-- JPA-провайдер (Hibernate) -->
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <!-- Дополнительные свойства Hibernate -->
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</prop>
+<!--                <prop key="hibernate.hbm2ddl.auto">update</prop> &lt;!&ndash; create, update, validate, none &ndash;&gt;-->
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
 </beans>
