@@ -23,4 +23,9 @@ public class UniversityServiceTest {
     public void getUniversities_test() {
         List<University> result = universityService.getUniversities();
     }
+
+    @Test
+    public void getUniversities_with_faculties_test() {
+        List<University> result = universityService.getAllWithFaculties();
+    }
 }

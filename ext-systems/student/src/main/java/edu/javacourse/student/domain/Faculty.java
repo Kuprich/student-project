@@ -41,5 +41,12 @@ public class Faculty {
         this.facultyName = facultyName;
     }
 
-
+    @Override
+    public String toString() {
+        return "Faculty{" +
+                "facultyId=" + facultyId +
+                ", university=" + university +
+                ", facultyName='" + facultyName + '\'' +
+                '}';
+    }
 }

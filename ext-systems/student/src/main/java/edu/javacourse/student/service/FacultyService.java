@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FacultyService {
@@ -17,5 +18,10 @@ public class FacultyService {
     @Transactional(readOnly = true)
     public List<Faculty> getFaculties() {
         return facultyRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Faculty> getFacultyById(Long facultyId) {
+        return facultyRepository.findById(facultyId);
     }
 }

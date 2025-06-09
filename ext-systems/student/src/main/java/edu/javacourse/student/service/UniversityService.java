@@ -17,5 +17,10 @@ public class UniversityService {
     public List<University> getUniversities() {
         return universityRepository.findAll();
     }
+
+    @Transactional(readOnly = true)
+    public List<University> getAllWithFaculties() {
+        return universityRepository.findAllWithFaculties();
+    }
 }
 
