@@ -30,7 +30,7 @@ public class Student {
     private String passportNumber;
 
     @Column(name = "passport_date")
-    private String passportDate;
+    private LocalDate passportDate;
 
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "student")
     List<StudentDocument> studentDocuments;
@@ -91,11 +91,11 @@ public class Student {
         this.passportNumber = passportNumber;
     }
 
-    public String getPassportDate() {
+    public LocalDate getPassportDate() {
         return passportDate;
     }
 
-    public void setPassportDate(String passportDate) {
+    public void setPassportDate(LocalDate passportDate) {
         this.passportDate = passportDate;
     }
 

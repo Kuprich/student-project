@@ -23,7 +23,7 @@ public class StudentService {
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentService.class);
 
     public List<StudentResponse> getStudentInfo(StudentRequest request) {
-        List<Student> students = studentRepository.finStudent(request.getLastName(), request.getFirstName(),
+        List<Student> students = studentRepository.findStudent(request.getLastName(), request.getFirstName(),
                 request.getMiddleName(), request.getDateOfBirth(), request.getPassportSeria(),
                 request.getPassportNumber(), request.getPassportDate());
 
@@ -38,7 +38,7 @@ public class StudentService {
     private StudentResponse getResponse(StudentDocument doc) {
         StudentResponse sr = new StudentResponse();
         sr.setDocumentDate(doc.getDocumentDate());
-        sr.setExpiredDate(doc.getExpiresDate());
+        sr.setExpiredDate(doc.getExpiredDate());
         sr.setFacultyName(doc.getFaculty().getFacultyName());
         sr.setUniversityName(doc.getFaculty().getUniversity().getUniversityName());
         sr.setStudentForm(doc.getStudentForm().toString());

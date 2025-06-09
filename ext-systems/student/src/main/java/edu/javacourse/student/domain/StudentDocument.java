@@ -17,8 +17,8 @@ public class StudentDocument {
     @Column(name = "document_date")
     private LocalDate documentDate;
 
-    @Column(name = "expires_date")
-    private LocalDate expiresDate;
+    @Column(name = "expired_date")
+    private LocalDate expiredDate;
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
@@ -72,12 +72,12 @@ public class StudentDocument {
         this.documentNumber = documentNumber;
     }
 
-    public LocalDate getExpiresDate() {
-        return expiresDate;
+    public LocalDate getExpiredDate() {
+        return expiredDate;
     }
 
-    public void setExpiresDate(LocalDate expiresDate) {
-        this.expiresDate = expiresDate;
+    public void setExpiredDate(LocalDate expiredDate) {
+        this.expiredDate = expiredDate;
     }
 
     public Student getStudent() {
