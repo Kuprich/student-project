@@ -20,9 +20,10 @@ public class StudentController {
         return studentService.getStudentInfo(request);
     }
 
-    @GetMapping("/check")
-    public String check() {
-        return "Rest service is working";
+    @GetMapping("/check/{id}")
+    public String check(@PathVariable("id") int id, @RequestParam("value") String value) {
+        return "Rest service is working. Id: " + id + " value: " + value;
     }
+
 
 }
