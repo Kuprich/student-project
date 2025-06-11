@@ -1,6 +1,4 @@
--- =============================================
 -- Удаление таблиц (если они существуют)
--- =============================================
 DROP TABLE IF EXISTS jc_student_child;
 DROP TABLE IF EXISTS jc_student_order;
 DROP TABLE IF EXISTS jc_passport_office;
@@ -8,37 +6,31 @@ DROP TABLE IF EXISTS jc_register_office;
 DROP TABLE IF EXISTS jc_country_struct;
 DROP TABLE IF EXISTS jc_street;
 DROP TABLE IF EXISTS jc_university;
+DROP TABLE IF EXISTS jc_student_order_tmp;
 
--- =============================================
+
 -- Создание таблицы улиц
--- =============================================
 CREATE TABLE jc_street (
     street_code  INTEGER      	  NOT NULL,
     street_name  VARCHAR(300),
     PRIMARY KEY (street_code)
 );
 
--- =============================================
 -- Создание таблицы университетов
--- =============================================
 CREATE TABLE jc_university (
     university_code  INTEGER      NOT NULL,
     university_name  VARCHAR(300),
     PRIMARY KEY (university_code)
 );
 
--- =============================================
 -- Создание таблицы структуры стран/регионов
--- =============================================
 CREATE TABLE jc_country_struct (
     area_id     CHAR(12)     NOT NULL,
     area_name   VARCHAR(200),
     PRIMARY KEY (area_id)
 );
 
--- =============================================
 -- Создание таблицы паспортных столов
--- =============================================
 CREATE TABLE jc_passport_office (
     p_office_id       INTEGER      NOT NULL,
     p_office_area_id  CHAR(12)     NOT NULL,
@@ -47,9 +39,7 @@ CREATE TABLE jc_passport_office (
     FOREIGN KEY (p_office_area_id) REFERENCES jc_country_struct(area_id) ON DELETE RESTRICT
 );
 
--- =============================================
 -- Создание таблицы ЗАГСов
--- =============================================
 CREATE TABLE jc_register_office (
     r_office_id       INTEGER      NOT NULL,
     r_office_area_id  CHAR(12)     NOT NULL,
@@ -58,9 +48,7 @@ CREATE TABLE jc_register_office (
     FOREIGN KEY (r_office_area_id) REFERENCES jc_country_struct(area_id) ON DELETE RESTRICT
 );
 
--- =============================================
 -- Создание таблицы студенческих заявок
--- =============================================
 CREATE TABLE jc_student_order (
     student_order_id SERIAL,
     student_order_status INT             NOT NULL,
@@ -115,9 +103,7 @@ CREATE TABLE jc_student_order (
     FOREIGN KEY (register_office_id)   REFERENCES jc_register_office(r_office_id) ON DELETE RESTRICT
 );
 
--- =============================================
 -- Создание таблицы детей студентов
--- =============================================
 CREATE TABLE jc_student_child (
     student_child_id      SERIAL,
     student_order_id      INTEGER        NOT NULL,
@@ -140,4 +126,23 @@ CREATE TABLE jc_student_child (
     FOREIGN KEY (c_street_code)        REFERENCES jc_street(street_code) ON DELETE RESTRICT,
     FOREIGN KEY (c_register_office_id) REFERENCES jc_register_office(r_office_id) ON DELETE RESTRICT,
     FOREIGN KEY (student_order_id)     REFERENCES jc_student_order(student_order_id) ON DELETE CASCADE
+);
+
+-- Создание таблицы студенческих заявок (временная)
+CREATE TABLE jc_student_order_tmp (
+    student_order_id SERIAL,
+
+    -- Данные мужа
+    h_sur_name           VARCHAR(100)    NOT NULL,
+    h_given_name         VARCHAR(100)    NOT NULL,
+    h_patronymic         VARCHAR(100)    NOT NULL,
+    h_date_of_birth      DATE            NOT NULL,
+
+    -- Данные жены
+    w_sur_name           VARCHAR(100)    NOT NULL,
+    w_given_name         VARCHAR(100)    NOT NULL,
+    w_patronymic         VARCHAR(100)    NOT NULL,
+    w_date_of_birth      DATE            NOT NULL,
+
+    PRIMARY KEY (student_order_id)
 );

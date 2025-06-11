@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentOrderService {
@@ -15,7 +16,17 @@ public class StudentOrderService {
     private StudentOrderRepository so_repository;
 
     @Transactional
-    public List<StudentOrder> getStudentOrders(){
+    public List<StudentOrder> getStudentOrders() {
         return so_repository.findAll();
+    }
+
+    @Transactional
+    public StudentOrder saveStudentOrder(StudentOrder so) {
+        return so_repository.save(so);
+    }
+
+    @Transactional
+    public Optional<StudentOrder> getStudentOrderById(Long id) {
+        return so_repository.findById(id);
     }
 }
