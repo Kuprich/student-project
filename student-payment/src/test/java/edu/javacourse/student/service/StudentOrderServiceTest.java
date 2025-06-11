@@ -2,6 +2,7 @@ package edu.javacourse.student.service;
 
 import edu.javacourse.student.config.AppConfig;
 import edu.javacourse.student.domain.Address;
+import edu.javacourse.student.domain.Adult;
 import edu.javacourse.student.domain.Person;
 import edu.javacourse.student.domain.StudentOrder;
 import org.junit.jupiter.api.Test;
@@ -47,19 +48,25 @@ class StudentOrderServiceTest {
 
 
 
-    private Person buildPerson(boolean isHusband) {
-        Person p = new Person();
+    private Adult buildPerson(boolean isHusband) {
+        Adult p = new Adult();
         if (isHusband) {
             p.setSurname("Иванов");
             p.setGivenName("Иван");
             p.setPatronymic("Иванович");
             p.setDateOfBirth(LocalDate.of(2000, 04, 06));
+            p.setPassportSeria("P_SERIA");
+            p.setPassportNumber("P_NUM");
+            p.setIssueDate(LocalDate.of(2014, 04, 30));
         }
         else {
             p.setSurname("Иванова");
             p.setGivenName("Ирина");
             p.setPatronymic("Ивановна");
             p.setDateOfBirth(LocalDate.of(2000, 05, 07));
+            p.setPassportSeria("P_SERIA");
+            p.setPassportNumber("P_NUM");
+            p.setIssueDate(LocalDate.of(2014, 05, 30));
         }
         Address address = new Address();
         address.setApartment("Apartment");

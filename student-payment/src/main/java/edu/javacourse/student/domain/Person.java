@@ -1,10 +1,10 @@
 package edu.javacourse.student.domain;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.MappedSuperclass;
 
 import java.time.LocalDate;
 
-@Embeddable
+@MappedSuperclass
 public class Person {
     private String surname;
     private String givenName;
