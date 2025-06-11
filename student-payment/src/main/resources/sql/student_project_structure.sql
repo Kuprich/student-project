@@ -4,9 +4,9 @@ DROP TABLE IF EXISTS jc_student_order;
 DROP TABLE IF EXISTS jc_passport_office;
 DROP TABLE IF EXISTS jc_register_office;
 DROP TABLE IF EXISTS jc_country_struct;
-DROP TABLE IF EXISTS jc_street;
 DROP TABLE IF EXISTS jc_university;
-DROP TABLE IF EXISTS jc_student_order_tmp;
+DROP TABLE IF EXISTS jc_street;
+DROP TABLE IF EXISTS jc_order_status;
 
 
 -- Создание таблицы улиц
@@ -30,6 +30,13 @@ CREATE TABLE jc_country_struct (
     PRIMARY KEY (area_id)
 );
 
+-- Создание таблицы статусов
+CREATE TABLE jc_order_status (
+    status_id     INTEGER    NOT NULL,
+    status_name   VARCHAR(20),
+    PRIMARY KEY (status_id)
+);
+
 -- Создание таблицы паспортных столов
 CREATE TABLE jc_passport_office (
     p_office_id       INTEGER      NOT NULL,
@@ -51,9 +58,9 @@ CREATE TABLE jc_register_office (
 -- Создание таблицы студенческих заявок
 CREATE TABLE jc_student_order (
     student_order_id SERIAL,
-    student_order_status INT             NOT NULL,
+    student_order_status_id INTEGER      NOT NULL,
     student_oder_date    TIMESTAMP       NOT NULL,
-    
+
     -- Данные мужа
     h_sur_name           VARCHAR(100)    NOT NULL,
     h_given_name         VARCHAR(100)    NOT NULL,
@@ -70,7 +77,7 @@ CREATE TABLE jc_student_order (
     h_apartment          VARCHAR(10),
     h_university_id      INTEGER         NOT NULL,
     h_student_number     VARCHAR(30)     NOT NULL,
-    
+
     -- Данные жены
     w_sur_name           VARCHAR(100)    NOT NULL,
     w_given_name         VARCHAR(100)    NOT NULL,
@@ -87,12 +94,12 @@ CREATE TABLE jc_student_order (
     w_apartment          VARCHAR(10),
     w_university_id      INTEGER         NOT NULL,
     w_student_number     VARCHAR(30)     NOT NULL,
-    
+
     -- Данные о браке
-    certificate_id       VARCHAR(20)     NOT NULL,
+    certificate_number       VARCHAR(20)     NOT NULL,
     register_office_id   INTEGER         NOT NULL,
     marriage_date        DATE            NOT NULL,
-    
+
     PRIMARY KEY (student_order_id),
     FOREIGN KEY (h_street_code)        REFERENCES jc_street(street_code) ON DELETE RESTRICT,
     FOREIGN KEY (w_street_code)        REFERENCES jc_street(street_code) ON DELETE RESTRICT,
@@ -100,14 +107,15 @@ CREATE TABLE jc_student_order (
     FOREIGN KEY (w_passport_office_id) REFERENCES jc_passport_office(p_office_id) ON DELETE RESTRICT,
     FOREIGN KEY (h_university_id)      REFERENCES jc_university(university_code) ON DELETE RESTRICT,
     FOREIGN KEY (w_university_id)      REFERENCES jc_university(university_code) ON DELETE RESTRICT,
-    FOREIGN KEY (register_office_id)   REFERENCES jc_register_office(r_office_id) ON DELETE RESTRICT
+    FOREIGN KEY (register_office_id)    REFERENCES jc_register_office(r_office_id) ON DELETE RESTRICT,
+    FOREIGN KEY (student_order_status_id)   REFERENCES jc_order_status(status_id) ON DELETE RESTRICT
 );
 
 -- Создание таблицы детей студентов
 CREATE TABLE jc_student_child (
     student_child_id      SERIAL,
     student_order_id      INTEGER        NOT NULL,
-    
+
     -- Данные ребенка
     c_sur_name           VARCHAR(100)    NOT NULL,
     c_given_name         VARCHAR(100)    NOT NULL,
@@ -121,46 +129,9 @@ CREATE TABLE jc_student_child (
     c_building           VARCHAR(10)     NOT NULL,
     c_extension          VARCHAR(10),
     c_apartment          VARCHAR(10),
-    
+
     PRIMARY KEY (student_child_id),
     FOREIGN KEY (c_street_code)        REFERENCES jc_street(street_code) ON DELETE RESTRICT,
     FOREIGN KEY (c_register_office_id) REFERENCES jc_register_office(r_office_id) ON DELETE RESTRICT,
     FOREIGN KEY (student_order_id)     REFERENCES jc_student_order(student_order_id) ON DELETE CASCADE
-);
-
--- Создание таблицы студенческих заявок (временная)
-CREATE TABLE jc_student_order_tmp (
-    student_order_id SERIAL,
-
-    -- Данные мужа
-    h_sur_name           VARCHAR(100)    NOT NULL,
-    h_given_name         VARCHAR(100)    NOT NULL,
-    h_patronymic         VARCHAR(100)    NOT NULL,
-    h_passport_seria     VARCHAR(10)     NOT NULL,
-    h_passport_number    VARCHAR(10)     NOT NULL,
-    h_passport_date      DATE            NOT NULL,
-    h_date_of_birth      DATE            NOT NULL,
-    h_post_index         VARCHAR(10),
-    h_street_code        INTEGER         NOT NULL,
-    h_building           VARCHAR(10)     NOT NULL,
-    h_extension          VARCHAR(10),
-    h_apartment          VARCHAR(10),
-
-    -- Данные жены
-    w_sur_name           VARCHAR(100)    NOT NULL,
-    w_given_name         VARCHAR(100)    NOT NULL,
-    w_patronymic         VARCHAR(100)    NOT NULL,
-    w_date_of_birth      DATE            NOT NULL,
-    w_passport_seria     VARCHAR(10)     NOT NULL,
-    w_passport_number    VARCHAR(10)     NOT NULL,
-    w_passport_date      DATE            NOT NULL,
-    w_post_index         VARCHAR(10),
-    w_street_code        INTEGER         NOT NULL,
-    w_building           VARCHAR(10)     NOT NULL,
-    w_extension          VARCHAR(10),
-    w_apartment          VARCHAR(10),
-
-    PRIMARY KEY (student_order_id),
-    FOREIGN KEY (h_street_code)        REFERENCES jc_street(street_code) ON DELETE RESTRICT,
-    FOREIGN KEY (w_street_code)        REFERENCES jc_street(street_code) ON DELETE RESTRICT
 );
