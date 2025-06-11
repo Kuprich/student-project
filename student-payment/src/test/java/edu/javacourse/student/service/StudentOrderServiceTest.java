@@ -1,6 +1,7 @@
 package edu.javacourse.student.service;
 
 import edu.javacourse.student.config.AppConfig;
+import edu.javacourse.student.domain.Address;
 import edu.javacourse.student.domain.Person;
 import edu.javacourse.student.domain.StudentOrder;
 import org.junit.jupiter.api.Test;
@@ -8,7 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,23 +20,32 @@ import static org.junit.jupiter.api.Assertions.*;
 class StudentOrderServiceTest {
 
     @Autowired
-    private StudentOrderService so_service;
+    private StudentOrderService soService;
+
+    @Autowired StreetService streetService;
+
+    @Test
+    public void getStreet() {
+        assertTrue(streetService.getStreetById(1L).isPresent());
+    }
 
     @Test
     public void saveStudentOrder() {
         StudentOrder so = new StudentOrder();
         so.setHusband(buildPerson(true));
         so.setWife(buildPerson(false));
-        StudentOrder so_result = so_service.saveStudentOrder(so);
+        StudentOrder so_result = soService.saveStudentOrder(so);
 
-        assertTrue(so_service.getStudentOrderById(so_result.getStudentOrderId()).isPresent());
+        assertTrue(soService.getStudentOrderById(so_result.getStudentOrderId()).isPresent());
     }
 
     @Test
     public void getStudentOrders() {
-        List<StudentOrder> so = so_service.getStudentOrders();
+        List<StudentOrder> so = soService.getStudentOrders();
         assertTrue(so.size() > 0);
     }
+
+
 
     private Person buildPerson(boolean isHusband) {
         Person p = new Person();
@@ -52,6 +61,14 @@ class StudentOrderServiceTest {
             p.setPatronymic("Ивановна");
             p.setDateOfBirth(LocalDate.of(2000, 05, 07));
         }
+        Address address = new Address();
+        address.setApartment("Apartment");
+        address.setBuilding("Building");
+        address.setExtension("Ext");
+        address.setPostCode("PC");
+        address.setStreet(streetService.getStreetById(2L).get());
+        p.setAddress(address);
+
         return p;
     }
 

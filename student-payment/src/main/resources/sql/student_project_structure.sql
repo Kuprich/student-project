@@ -137,12 +137,24 @@ CREATE TABLE jc_student_order_tmp (
     h_given_name         VARCHAR(100)    NOT NULL,
     h_patronymic         VARCHAR(100)    NOT NULL,
     h_date_of_birth      DATE            NOT NULL,
+    h_post_index         VARCHAR(10),
+    h_street_code        INTEGER         NOT NULL,
+    h_building           VARCHAR(10)     NOT NULL,
+    h_extension          VARCHAR(10),
+    h_apartment          VARCHAR(10),
 
     -- Данные жены
     w_sur_name           VARCHAR(100)    NOT NULL,
     w_given_name         VARCHAR(100)    NOT NULL,
     w_patronymic         VARCHAR(100)    NOT NULL,
     w_date_of_birth      DATE            NOT NULL,
+    w_post_index         VARCHAR(10),
+    w_street_code        INTEGER         NOT NULL,
+    w_building           VARCHAR(10)     NOT NULL,
+    w_extension          VARCHAR(10),
+    w_apartment          VARCHAR(10),
 
-    PRIMARY KEY (student_order_id)
+    PRIMARY KEY (student_order_id),
+    FOREIGN KEY (h_street_code)        REFERENCES jc_street(street_code) ON DELETE RESTRICT,
+    FOREIGN KEY (w_street_code)        REFERENCES jc_street(street_code) ON DELETE RESTRICT
 );
