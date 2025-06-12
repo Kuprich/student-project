@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "jc_student_order")
@@ -21,12 +22,10 @@ public class StudentOrder {
     @Column(name = "student_oder_date")
     private LocalDateTime studentOrderDate;
 
-
     @AssociationOverrides({
             @AssociationOverride(name = "address.street", joinColumns = @JoinColumn(name = "h_street_code")),
             @AssociationOverride(name = "passportOffice", joinColumns = @JoinColumn(name = "h_passport_office_id")),
             @AssociationOverride(name = "university", joinColumns = @JoinColumn(name = "h_university_id"))
-
     })
     @AttributeOverrides({
             @AttributeOverride(name = "surname", column = @Column(name = "h_sur_name")),
@@ -43,7 +42,6 @@ public class StudentOrder {
             @AttributeOverride(name = "address.extension", column = @Column(name = "h_extension")),
             @AttributeOverride(name = "address.apartment", column = @Column(name = "h_apartment")),
             @AttributeOverride(name = "address.postCode", column = @Column(name = "h_post_index")),
-
     })
     @Embedded
     private Adult husband;
@@ -74,13 +72,24 @@ public class StudentOrder {
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn(name = "register_office_id")
-    public RegisterOffice registerOffice;
+    private RegisterOffice registerOffice;
 
     @Column(name = "certificate_number")
-    public String certificateNumber;
+    private String certificateNumber;
 
     @Column(name = "marriage_date")
-    public LocalDate marriageDate;
+    private LocalDate marriageDate;
+
+    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.REMOVE} , fetch = FetchType.LAZY, mappedBy = "studentOrder")
+    private List<StudentChild> children;
+
+    public List<StudentChild> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<StudentChild> children) {
+        this.children = children;
+    }
 
     public RegisterOffice getRegisterOffice() {
         return registerOffice;
