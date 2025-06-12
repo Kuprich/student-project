@@ -1,10 +1,7 @@
 package edu.javacourse.student.service;
 
 import edu.javacourse.student.config.AppConfig;
-import edu.javacourse.student.domain.Address;
-import edu.javacourse.student.domain.Adult;
-import edu.javacourse.student.domain.StudentChild;
-import edu.javacourse.student.domain.StudentOrder;
+import edu.javacourse.student.domain.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,7 +105,11 @@ class StudentOrderServiceTest {
     }
 
     private StudentChild buildChild(StudentOrder so) {
-        StudentChild ch = new StudentChild();
+        StudentChild sCh = new StudentChild();
+        sCh.setStudentOrder(so);
+
+        Child ch = new Child();
+
         ch.setCertificateNumber("BIRTH_N");
         ch.setCertificateDate(LocalDate.now());
         ch.setRegisterOffice(roService.getRegisterOfficeById(1L).get());
@@ -125,9 +126,10 @@ class StudentOrderServiceTest {
         address.setPostCode("PC");
         address.setStreet(streetService.getStreetById(2L).get());
         ch.setAddress(address);
-        ch.setStudentOrder(so);
 
-        return ch;
+        sCh.setChild(ch);
+
+        return sCh;
     }
 
 
